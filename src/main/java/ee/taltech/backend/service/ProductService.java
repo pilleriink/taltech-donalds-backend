@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -16,7 +17,12 @@ public class ProductService {
     private ProductRepository productRepository;
 
     public List<Product> findAll(String name) {
-        //todo add name?
+        if (name != null) {
+            return productRepository.findAll()
+                    .stream()
+                    .filter(product -> product.getName().equals(name))
+                    .collect(Collectors.toList());
+        }
         return productRepository.findAll();
     }
 
