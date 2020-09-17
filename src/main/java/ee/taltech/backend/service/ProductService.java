@@ -16,19 +16,17 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public List<Product> findAll(String name) {
-        if (name != null) {
-            return productRepository.findAll()
-                    .stream()
-                    .filter(product -> product.getName().equals(name))
-                    .collect(Collectors.toList());
-        }
-        return productRepository.findAll();
+    public List<Product> findAllByName(String name) {
+        return productRepository.findByNameContains(name);
     }
 
     public Product save(Product product) throws InvalidProductException {
-        if (product.getName() == null || product.getPrice() == null || product.getImage() == null) {
-            throw new InvalidProductException("Product has no name, price or image");
+        if (product.getName() == null
+                || product.getPrice() == null
+                || product.getImage() == null
+                || product.getDescription() == null
+                || product.getRemovableIngredients() == null) {
+            throw new InvalidProductException("Invalid product");
         }
         if (product.getId() != null) {
             throw new InvalidProductException("Product already exists");
@@ -42,8 +40,12 @@ public class ProductService {
     }
 
     public Product update(Product product, Long id) throws InvalidProductException, ProductNotFoundException {
-        if (product.getName() == null || product.getPrice() == null || product.getImage() == null) {
-            throw new InvalidProductException("Product has no name, price or image");
+        if (product.getName() == null
+                || product.getPrice() == null
+                || product.getImage() == null
+                || product.getDescription() == null
+                || product.getRemovableIngredients() == null) {
+            throw new InvalidProductException("Invalid product");
         }
         Product databaseProduct = findById(id);
         databaseProduct.setImage(product.getImage());
