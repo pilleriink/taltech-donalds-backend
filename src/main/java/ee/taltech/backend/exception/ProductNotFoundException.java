@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 @NoArgsConstructor
 @RequiredArgsConstructor
-public class InvalidProductException extends Throwable {
+public class ProductNotFoundException extends Throwable{
 
     @NonNull
     private String message;
-
 }
