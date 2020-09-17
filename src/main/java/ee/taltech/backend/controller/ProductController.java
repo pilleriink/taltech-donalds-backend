@@ -22,7 +22,7 @@ public class ProductController {
     }
 
     @GetMapping("{id}")
-    public Product getProduct(@PathVariable Long id) throws ProductNotFoundException {
+    public Product getProductById(@PathVariable Long id) throws ProductNotFoundException {
         return productService.findById(id);
     }
 
@@ -41,8 +41,12 @@ public class ProductController {
         productService.delete(id);
     }
 
+    @GetMapping("{name}")
+    public List<Product> getProductsByName(@PathVariable String name) {
+        return productService.findAll(name);
+    }
 
-    //todo add search by name
+
     //todo validation?
     //todo add tests
 
