@@ -16,11 +16,6 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping
-    public List<Product> getProducts(@RequestParam(value = "name", required = false) String name) {
-        return productService.findAll(name);
-    }
-
     @GetMapping("{id}")
     public Product getProductById(@PathVariable Long id) throws ProductNotFoundException {
         return productService.findById(id);
@@ -43,7 +38,7 @@ public class ProductController {
 
     @GetMapping("{name}")
     public List<Product> getProductsByName(@PathVariable String name) {
-        return productService.findAll(name);
+        return productService.findAllByName(name);
     }
 
 
