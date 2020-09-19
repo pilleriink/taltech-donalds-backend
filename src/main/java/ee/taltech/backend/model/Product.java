@@ -2,10 +2,7 @@ package ee.taltech.backend.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Getter
@@ -22,4 +19,6 @@ public class Product {
     private String image;
     private String description;
     private String removableIngredients;
+    @ManyToOne
+    private Category category;
 }
