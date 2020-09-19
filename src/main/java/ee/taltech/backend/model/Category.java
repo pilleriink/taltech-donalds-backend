@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -18,5 +19,5 @@ public class Category {
     private Long id;
     private String name;
     @OneToMany
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 }
