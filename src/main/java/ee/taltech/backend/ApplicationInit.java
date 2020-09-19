@@ -14,6 +14,8 @@ import java.util.List;
 @Component
 public class ApplicationInit implements CommandLineRunner {
 
+    //this will be admin's job once we have different roles
+
     @Autowired
     private ProductRepository productRepository;
     @Autowired
