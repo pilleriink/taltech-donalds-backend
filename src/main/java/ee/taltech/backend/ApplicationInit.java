@@ -1,6 +1,6 @@
 package ee.taltech.backend;
 
-import ee.taltech.backend.model.Category;
+import ee.taltech.backend.model.category.Category;
 import ee.taltech.backend.model.Product;
 import ee.taltech.backend.repository.CategoryRepository;
 import ee.taltech.backend.repository.ProductRepository;

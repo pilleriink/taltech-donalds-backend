@@ -1,5 +1,6 @@
-package ee.taltech.backend.model;
+package ee.taltech.backend.model.category;
 
+import ee.taltech.backend.model.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +19,6 @@ public class Category {
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "category")
     private List<Product> products = new ArrayList<>();
 }
