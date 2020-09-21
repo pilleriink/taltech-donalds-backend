@@ -3,12 +3,14 @@ package ee.taltech.backend.controller;
 import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.product.Product;
+import ee.taltech.backend.model.product.ProductDto;
 import ee.taltech.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RequestMapping("products")
 @RestController
 public class ProductController {
@@ -16,9 +18,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("{id}")
-    public Product getProductById(@PathVariable Long id) throws ProductNotFoundException {
-        return productService.findById(id);
+    @GetMapping("/{id}")
+    public ProductDto getProductById(@PathVariable Long id) throws ProductNotFoundException {
+        return new ProductDto(productService.findById(id));
     }
 
     @PostMapping
@@ -26,20 +28,16 @@ public class ProductController {
         return productService.save(product);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public Product updateProduct(@RequestBody Product product, @PathVariable Long id) throws InvalidProductException, ProductNotFoundException {
         return productService.update(product, id);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) throws ProductNotFoundException {
         productService.delete(id);
     }
 
-    @GetMapping("{name}")
-    public List<Product> getProductsByName(@PathVariable String name) {
-        return productService.findAllByName(name);
-    }
 
 
     //todo validation?
