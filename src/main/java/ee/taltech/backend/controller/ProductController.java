@@ -2,7 +2,7 @@ package ee.taltech.backend.controller;
 
 import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.exception.ProductNotFoundException;
-import ee.taltech.backend.model.Product;
+import ee.taltech.backend.model.product.Product;
 import ee.taltech.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

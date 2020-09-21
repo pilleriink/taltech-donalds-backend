@@ -1,6 +1,6 @@
 package ee.taltech.backend.model.category;
 
-import ee.taltech.backend.model.Product;
+import ee.taltech.backend.model.product.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

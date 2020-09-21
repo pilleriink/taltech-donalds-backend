@@ -3,6 +3,7 @@ package ee.taltech.backend.controller;
 import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.category.Category;
+import ee.taltech.backend.model.category.CategoryDto;
 import ee.taltech.backend.model.category.CategoryMinifiedDto;
 import ee.taltech.backend.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,8 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public Category getCategoryById(@PathVariable Long id) throws ProductNotFoundException {
-        return categoryService.findById(id);
+    public CategoryDto getCategoryById(@PathVariable Long id) throws ProductNotFoundException {
+        return new CategoryDto(categoryService.findById(id));
     }
 
     @PostMapping

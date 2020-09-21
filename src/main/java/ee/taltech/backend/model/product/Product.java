@@ -1,4 +1,4 @@
-package ee.taltech.backend.model;
+package ee.taltech.backend.model.product;
 
 import ee.taltech.backend.model.category.Category;
 import lombok.*;
