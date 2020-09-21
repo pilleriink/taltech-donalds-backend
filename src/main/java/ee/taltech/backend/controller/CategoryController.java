@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RequestMapping("categories")
 @RestController
 public class CategoryController {
@@ -18,11 +19,11 @@ public class CategoryController {
 
 
     @GetMapping
-    public List<Category> findAll(@PathVariable Long id) throws ProductNotFoundException {
+    public List<Category> findAll() throws ProductNotFoundException {
         return categoryService.findAll();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Category getCategoryById(@PathVariable Long id) throws ProductNotFoundException {
         return categoryService.findById(id);
     }
@@ -32,12 +33,12 @@ public class CategoryController {
         return categoryService.save(category);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public Category updateProduct(@RequestBody Category category, @PathVariable Long id) throws InvalidProductException, ProductNotFoundException {
         return categoryService.update(category, id);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteCategory(@PathVariable Long id) throws ProductNotFoundException {
         categoryService.delete(id);
     }
