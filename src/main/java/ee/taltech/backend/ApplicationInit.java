@@ -71,10 +71,12 @@ public class ApplicationInit implements CommandLineRunner {
 
         productRepository.saveAll(productList);
 
+        /*
         List<Location> locationList = List.of(
                 new Location("branch1", "Ehitajate tee 5, 19086 Tallinn Estonia",59.3943529, 24.668998869937695)
         );
         locationRepository.saveAll(locationList);
+         */
     }
 
     public Product createProduct(String name, String description, String image, String removableIngredients, Double price, String category) {
