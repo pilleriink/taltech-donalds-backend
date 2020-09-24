@@ -77,6 +77,7 @@ public class ApplicationInit implements CommandLineRunner {
         );
         locationRepository.saveAll(locationList);
          */
+        locationRepository.deleteAll();
     }
 
     public Product createProduct(String name, String description, String image, String removableIngredients, Double price, String category) {
