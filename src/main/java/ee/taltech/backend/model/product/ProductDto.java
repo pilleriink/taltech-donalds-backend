@@ -5,6 +5,10 @@ import ee.taltech.backend.model.category.CategoryMinifiedDto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Getter
 @Setter
 public class ProductDto {
@@ -14,7 +18,7 @@ public class ProductDto {
     private Double price;
     private String image;
     private String description;
-    private String removableIngredients;
+    private List<Ingredient> removableIngredients;
     private CategoryMinifiedDto category;
 
     public ProductDto(Product product) {
@@ -23,7 +27,8 @@ public class ProductDto {
         price = product.getPrice();
         image = product.getImage();
         description = product.getDescription();
-        removableIngredients = product.getRemovableIngredients();
+        removableIngredients = Arrays.stream(product.getRemovableIngredients().split(", "))
+                .map(Ingredient::new).collect(Collectors.toList());
         category = new CategoryMinifiedDto(product.getCategory());
     }
 }
