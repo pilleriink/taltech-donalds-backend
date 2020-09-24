@@ -1,9 +1,11 @@
 package ee.taltech.backend;
 
 import ee.taltech.backend.model.category.Category;
+import ee.taltech.backend.model.location.Location;
 import ee.taltech.backend.model.product.Product;
 import ee.taltech.backend.repository.CategoryRepository;
 import ee.taltech.backend.repository.ProductRepository;
+import ee.taltech.backend.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -19,7 +21,8 @@ public class ApplicationInit implements CommandLineRunner {
     private ProductRepository productRepository;
     @Autowired
     private CategoryRepository categoryRepository;
-
+    @Autowired
+    private LocationRepository locationRepository;
     @Override
     public void run(String... args) throws Exception {
         categoryRepository.deleteAll();
@@ -67,6 +70,11 @@ public class ApplicationInit implements CommandLineRunner {
         );
 
         productRepository.saveAll(productList);
+
+        List<Location> locationList = List.of(
+                new Location("branch1", "Ehitajate tee 5, 19086 Tallinn Estonia",59.3943529, 24.668998869937695)
+        );
+        locationRepository.saveAll(locationList);
     }
 
     public Product createProduct(String name, String description, String image, String removableIngredients, Double price, String category) {
