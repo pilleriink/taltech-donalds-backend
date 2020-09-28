@@ -14,8 +14,6 @@ public class LocationController {
     private List<Location> locations = new ArrayList<>();
 
     public LocationController() {
-        this.locations.add(new Location(1L,"branch1", "Ehitajate tee 5, 19086 Tallinn Estonia",59.3943529, 24.668998869937695));
-        this.locations.add(new Location(2L, "branch2", "Raja 4, 12616 Tallinn",59.391073 , 24.6640777));
     }
 
     @GetMapping

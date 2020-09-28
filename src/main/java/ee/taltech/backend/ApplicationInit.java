@@ -70,14 +70,11 @@ public class ApplicationInit implements CommandLineRunner {
         );
 
         productRepository.saveAll(productList);
-
-        /*
         List<Location> locationList = List.of(
-                new Location("branch1", "Ehitajate tee 5, 19086 Tallinn Estonia",59.3943529, 24.668998869937695)
+                new Location(1L,"branch1", "Ehitajate tee 5, 19086 Tallinn Estonia",59.3943529, 24.668998869937695),
+                new Location(2L, "branch2", "Raja 4, 12616 Tallinn Estonia",59.391073 , 24.6640777)
         );
         locationRepository.saveAll(locationList);
-         */
-        locationRepository.deleteAll();
     }
 
     public Product createProduct(String name, String description, String image, String removableIngredients, Double price, String category) {
