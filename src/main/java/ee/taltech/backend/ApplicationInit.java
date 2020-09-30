@@ -23,6 +23,7 @@ public class ApplicationInit implements CommandLineRunner {
     private CategoryRepository categoryRepository;
     @Autowired
     private LocationRepository locationRepository;
+
     @Override
     public void run(String... args) throws Exception {
         categoryRepository.deleteAll();

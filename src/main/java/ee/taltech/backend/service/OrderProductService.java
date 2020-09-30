@@ -16,7 +16,7 @@ public class OrderProductService {
 
     public OrderProduct save(OrderProduct orderProduct) throws InvalidOrderProductException {
         if (orderProduct.getId() == null
-                || orderProduct.getRemovedProducts() == null
+                || orderProduct.getRemovedIngredients() == null
                 || orderProduct.getClientOrder() == null) {
             throw new InvalidOrderProductException("Invalid product");
         }

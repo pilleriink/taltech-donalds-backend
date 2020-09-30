@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Getter
@@ -21,11 +18,12 @@ public class ClientOrder {
     @Id
     @GeneratedValue
     private Long id;
-    private String number;
+    private String phoneNumber;
     private String email;
     private Double price;
-    private String location;
-    @OneToMany(mappedBy = "clientOrder")
+    @ManyToOne
+    private Location location;
+    @OneToMany(mappedBy = "clientOrder", cascade = CascadeType.ALL)
     private List<OrderProduct> orderProducts;
 
 }

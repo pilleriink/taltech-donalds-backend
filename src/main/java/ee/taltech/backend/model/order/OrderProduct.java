@@ -18,7 +18,9 @@ public class OrderProduct {
     @Id
     @GeneratedValue
     private Long id;
-    private String removedProducts;
+    private String name;
+    private Double price;
+    private String removedIngredients;
     @ManyToOne
     private ClientOrder clientOrder;
 }

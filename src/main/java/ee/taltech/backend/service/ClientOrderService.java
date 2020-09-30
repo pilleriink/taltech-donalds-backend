@@ -15,16 +15,16 @@ public class ClientOrderService {
     private ClientOrderRepository clientOrderRepository;
 
     public ClientOrder save(ClientOrder clientOrder) throws InvalidOrderException {
-        if (clientOrder.getId() == null
-                || clientOrder.getEmail() == null
+        System.out.println(clientOrder.getEmail());
+        System.out.println(clientOrder.getPhoneNumber());
+        System.out.println(clientOrder.getPrice());
+        System.out.println(clientOrder.getOrderProducts());
+        if (clientOrder.getEmail() == null
                 || clientOrder.getLocation() == null
-                || clientOrder.getNumber() == null
+                || clientOrder.getPhoneNumber() == null
                 || clientOrder.getPrice() == null
                 || clientOrder.getOrderProducts() == null) {
             throw new InvalidOrderException("Invalid order");
-        }
-        if (clientOrder.getId() != null) {
-            throw new InvalidOrderException("Order already exists");
         }
         return clientOrderRepository.save(clientOrder);
     }
