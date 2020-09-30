@@ -15,10 +15,6 @@ public class ClientOrderService {
     private ClientOrderRepository clientOrderRepository;
 
     public ClientOrder save(ClientOrder clientOrder) throws InvalidOrderException {
-        System.out.println(clientOrder.getEmail());
-        System.out.println(clientOrder.getPhoneNumber());
-        System.out.println(clientOrder.getPrice());
-        System.out.println(clientOrder.getOrderProducts());
         if (clientOrder.getEmail() == null
                 || clientOrder.getLocation() == null
                 || clientOrder.getPhoneNumber() == null
