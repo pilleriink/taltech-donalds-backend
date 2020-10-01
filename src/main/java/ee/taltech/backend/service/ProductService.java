@@ -38,6 +38,10 @@ public class ProductService {
                 .orElseThrow(ProductNotFoundException::new);
     }
 
+    public Product findByName(String name) throws ProductNotFoundException {
+        return productRepository.findByName(name);
+    }
+
     public Product update(Product product, Long id) throws InvalidProductException, ProductNotFoundException {
         if (product.getName() == null
                 || product.getPrice() == null
