@@ -81,8 +81,9 @@ public class ApplicationInit implements CommandLineRunner {
         );
         locationRepository.saveAll(locationList);
 
+        Product chicken_burger = productRepository.findByName("Chicken burger");
         List<Comment> commentList = List.of(
-                new Comment(1L, "this burger is great!", productRepository.findByName("Chicken burger"))
+                new Comment("this burger is great!", chicken_burger.getId())
         );
         commentRepository.saveAll(commentList);
 

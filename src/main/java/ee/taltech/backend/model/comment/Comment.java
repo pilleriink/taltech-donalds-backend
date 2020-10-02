@@ -16,12 +16,10 @@ public class Comment {
     private Long id;
     //private String username;
     private String comment;
-    @ManyToOne
-    private Product product;
+    private Long productId;
 
-    public Comment(long id, String comment, Product product) {
-        this.id = id;
+    public Comment(String comment, Long productId) {
         this.comment = comment;
-        this.product = product;
+        this.productId = productId;
     }
 }

@@ -7,7 +7,6 @@ import lombok.*;
 public class CommentDto {
 
     private Long id;
-    //private String username;
     private String comment;
 
     public CommentDto(Comment c) {

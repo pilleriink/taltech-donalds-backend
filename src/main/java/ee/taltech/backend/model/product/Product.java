@@ -23,7 +23,7 @@ public class Product {
     private String image;
     private String description;
     private String removableIngredients;
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "productId")
     private List<Comment> comments = new ArrayList<>();
     @ManyToOne
     private Category category;
