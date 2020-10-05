@@ -15,11 +15,6 @@ public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
 
-    public Comment findById(Long id) throws CommentNotFoundException {
-        return commentRepository.findById(id)
-                .orElseThrow(CommentNotFoundException::new);
-    }
-
     public Comment createNewComment(Product product, CommentRequest request) throws InvalidCommentException {
         Comment comment = new Comment();
         comment.setProduct(product);
