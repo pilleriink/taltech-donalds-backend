@@ -5,6 +5,7 @@ import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.comment.CommentDto;
+import ee.taltech.backend.model.comment.CommentRequest;
 import ee.taltech.backend.model.product.Product;
 import ee.taltech.backend.model.product.ProductDto;
 import ee.taltech.backend.service.CommentService;
@@ -28,28 +29,10 @@ public class ProductController {
         return new ProductDto(productService.findById(id));
     }
 
-    @PostMapping
-    public Product saveProduct(@RequestBody Product product) throws InvalidProductException {
-        return productService.save(product);
+    @PostMapping("/{productId}/comments")
+    public CommentDto saveComment(@PathVariable Long productId, @RequestBody CommentRequest request) throws InvalidCommentException, ProductNotFoundException {
+        Product product = productService.findById(productId);
+        return new CommentDto(commentService.createNewComment(product, request));
     }
-
-    @PostMapping("/{id}/comments")
-    public Comment saveComment(@RequestBody Comment comment) throws InvalidCommentException {
-        return commentService.save(comment);
-    }
-
-    @PutMapping("/{id}")
-    public Product updateProduct(@RequestBody Product product, @PathVariable Long id) throws InvalidProductException, ProductNotFoundException {
-        return productService.update(product, id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id) throws ProductNotFoundException {
-        productService.delete(id);
-    }
-
-
-    //todo validation?
-    //todo add tests
 
 }

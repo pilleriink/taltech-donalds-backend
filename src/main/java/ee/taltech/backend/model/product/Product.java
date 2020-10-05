@@ -1,5 +1,6 @@
 package ee.taltech.backend.model.product;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.category.Category;
 
@@ -23,7 +24,8 @@ public class Product {
     private String image;
     private String description;
     private String removableIngredients;
-    @OneToMany(mappedBy = "productId")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
     @ManyToOne
     private Category category;

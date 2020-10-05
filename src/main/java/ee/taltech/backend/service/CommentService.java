@@ -4,6 +4,7 @@ import ee.taltech.backend.exception.CommentNotFoundException;
 import ee.taltech.backend.exception.InvalidCommentException;
 import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.model.comment.Comment;
+import ee.taltech.backend.model.comment.CommentRequest;
 import ee.taltech.backend.model.product.Product;
 import ee.taltech.backend.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,13 @@ public class CommentService {
     public Comment findById(Long id) throws CommentNotFoundException {
         return commentRepository.findById(id)
                 .orElseThrow(CommentNotFoundException::new);
+    }
+
+    public Comment createNewComment(Product product, CommentRequest request) throws InvalidCommentException {
+        Comment comment = new Comment();
+        comment.setProduct(product);
+        comment.setComment(request.getComment());
+        return save(comment);
     }
 
     public Comment save(Comment comment) throws InvalidCommentException {

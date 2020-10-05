@@ -20,7 +20,6 @@ public class CategoryController {
     @Autowired
     CategoryService categoryService;
 
-
     @GetMapping
     public List<CategoryMinifiedDto> findAll() throws ProductNotFoundException {
         return categoryService.findAll().stream().map(CategoryMinifiedDto::new).collect(Collectors.toList());
@@ -29,21 +28,6 @@ public class CategoryController {
     @GetMapping("/{id}")
     public CategoryDto getCategoryById(@PathVariable Long id) throws ProductNotFoundException {
         return new CategoryDto(categoryService.findById(id));
-    }
-
-    @PostMapping
-    public Category saveCategory(@RequestBody Category category) throws InvalidProductException {
-        return categoryService.save(category);
-    }
-
-    @PutMapping("/{id}")
-    public Category updateProduct(@RequestBody Category category, @PathVariable Long id) throws InvalidProductException, ProductNotFoundException {
-        return categoryService.update(category, id);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteCategory(@PathVariable Long id) throws ProductNotFoundException {
-        categoryService.delete(id);
     }
 
 }

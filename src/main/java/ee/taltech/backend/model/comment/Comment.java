@@ -1,5 +1,6 @@
 package ee.taltech.backend.model.comment;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ee.taltech.backend.model.product.Product;
 import lombok.*;
 
@@ -16,10 +17,12 @@ public class Comment {
     private Long id;
     //private String username;
     private String comment;
-    private Long productId;
+    @ManyToOne
+    private Product product;
 
-    public Comment(String comment, Long productId) {
+    public Comment(Long id, String comment, Product product) {
+        this.id = id;
         this.comment = comment;
-        this.productId = productId;
+        this.product = product;
     }
 }

@@ -83,7 +83,7 @@ public class ApplicationInit implements CommandLineRunner {
 
         Product chicken_burger = productRepository.findByName("Chicken burger");
         List<Comment> commentList = List.of(
-                new Comment("this burger is great!", chicken_burger.getId())
+                new Comment(1L, "this burger is great!", chicken_burger)
         );
         commentRepository.saveAll(commentList);
 
