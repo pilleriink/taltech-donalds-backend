@@ -4,6 +4,7 @@ import ee.taltech.backend.exception.InvalidOrderProductException;
 import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.model.order.OrderProduct;
 import ee.taltech.backend.model.product.Product;
+import ee.taltech.backend.service.EmailServiceImpl;
 import ee.taltech.backend.service.OrderProductService;
 import ee.taltech.backend.service.ProductService;
 import org.hibernate.criterion.Order;
