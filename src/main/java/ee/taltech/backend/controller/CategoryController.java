@@ -1,5 +1,6 @@
 package ee.taltech.backend.controller;
 
+import ee.taltech.backend.exception.CategoryNotFoundException;
 import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.category.Category;
@@ -26,7 +27,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public CategoryDto getCategoryById(@PathVariable Long id) throws ProductNotFoundException {
+    public CategoryDto getCategoryById(@PathVariable Long id) throws CategoryNotFoundException {
         return new CategoryDto(categoryService.findById(id));
     }
 

@@ -1,5 +1,6 @@
 package ee.taltech.backend.service;
 
+import ee.taltech.backend.exception.CategoryNotFoundException;
 import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.category.Category;
@@ -19,9 +20,9 @@ public class CategoryService {
         return categoryRepository.findAll();
     }
 
-    public Category findById(Long id) throws ProductNotFoundException {
+    public Category findById(Long id) throws CategoryNotFoundException {
         return categoryRepository.findById(id)
-                .orElseThrow(ProductNotFoundException::new);
+                .orElseThrow(CategoryNotFoundException::new);
     }
 
 
