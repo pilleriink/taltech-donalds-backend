@@ -96,7 +96,17 @@ public class ServiceTest {
             orderProducts.add(orderProduct);
         }
         clientOrder.setOrderProducts(orderProducts);
-        clientOrder.setLocation(new Location(1L,"branch1", "Ehitajate tee 5, 19086 Tallinn Estonia",59.3943529, 24.668998869937695));
+
+        Location location = new Location();
+        location.setId(1L);
+        location.setName("branch1");
+        location.setAddress("Ehitajate tee 5, 19086 Tallinn Estonia");
+        location.setLon(59.3943529);
+        location.setLat(24.668998869937695);
+        clientOrder.setLocation(location);
+        clientOrder.setEmail("a@gmail.com");
+        clientOrder.setLocation(location);
+
         String text = "Thank you for you order!\n" +
                 " \n" +
                 "Order:\n" +
@@ -131,7 +141,15 @@ public class ServiceTest {
             orderProducts.add(orderProduct);
         }
         clientOrder.setOrderProducts(orderProducts);
-        clientOrder.setLocation(new Location(1L,"branch1", "Ehitajate tee 5, 19086 Tallinn Estonia",59.3943529, 24.668998869937695));
+
+        Location location = new Location();
+        location.setId(1L);
+        location.setName("branch1");
+        location.setAddress("Ehitajate tee 5, 19086 Tallinn Estonia");
+        location.setLon(59.3943529);
+        location.setLat(24.668998869937695);
+
+        clientOrder.setLocation(location);
         clientOrder.setEmail("a@gmail.com");
         SimpleMailMessage simpleMailMessage = emailService.constructSimpleMailMessage(clientOrder);
         assertSame(Objects.requireNonNull(simpleMailMessage.getTo())[0], clientOrder.getEmail());

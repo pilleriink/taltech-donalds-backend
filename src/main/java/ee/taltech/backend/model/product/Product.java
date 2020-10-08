@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.category.Category;
 
+import ee.taltech.backend.model.meal.Meal;
 import lombok.*;
 
 import javax.persistence.*;
@@ -29,4 +30,8 @@ public class Product {
     private List<Comment> comments = new ArrayList<>();
     @ManyToOne
     private Category category;
+    @ManyToMany
+    private List<Meal> meals = new ArrayList<>();
+
+    public void addMeal(Meal meal) {meals.add(meal);}
 }

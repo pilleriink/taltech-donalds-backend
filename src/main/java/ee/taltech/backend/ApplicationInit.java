@@ -3,11 +3,9 @@ package ee.taltech.backend;
 import ee.taltech.backend.model.category.Category;
 import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.location.Location;
+import ee.taltech.backend.model.meal.Meal;
 import ee.taltech.backend.model.product.Product;
-import ee.taltech.backend.repository.CategoryRepository;
-import ee.taltech.backend.repository.CommentRepository;
-import ee.taltech.backend.repository.ProductRepository;
-import ee.taltech.backend.repository.LocationRepository;
+import ee.taltech.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -27,9 +25,11 @@ public class ApplicationInit implements CommandLineRunner {
     private LocationRepository locationRepository;
     @Autowired
     private CommentRepository commentRepository;
+    @Autowired
+    MealRepository mealRepository;
+
     @Override
     public void run(String... args) throws Exception {
-        categoryRepository.deleteAll();
         List<Category> categoryList = List.of(
                 createCategory("Burgers"),
                 createCategory("Finger food"),
@@ -37,7 +37,6 @@ public class ApplicationInit implements CommandLineRunner {
         );
         categoryRepository.saveAll(categoryList);
 
-        productRepository.deleteAll();
         List<Product> productList = List.of(
                 createProduct("Chicken burger",
                         "Delicious chicken burger",
@@ -72,21 +71,34 @@ public class ApplicationInit implements CommandLineRunner {
                         "", "ice",
                         0.99, "Drinks")
         );
-
         productRepository.saveAll(productList);
 
         List<Location> locationList = List.of(
-                new Location(1L,"branch1", "Ehitajate tee 5, 19086 Tallinn Estonia",59.3943529, 24.668998869937695),
-                new Location(2L, "branch2", "Raja 4, 12616 Tallinn Estonia",59.391073 , 24.6640777)
+                createLocation("branch1", "Ehitajate tee 5, 19086 Tallinn Estonia",59.3943529, 24.668998869937695),
+                createLocation("branch2", "Raja 4, 12616 Tallinn Estonia",59.391073 , 24.6640777)
         );
         locationRepository.saveAll(locationList);
 
-        Product chicken_burger = productRepository.findByName("Chicken burger");
-        List<Comment> commentList = List.of(
-                new Comment(1L, "this burger is great!", chicken_burger)
-        );
-        commentRepository.saveAll(commentList);
+        commentRepository.save(new Comment(1L, "this burger is great!", productRepository.findByName("Chicken burger")));
 
+        List<Meal> mealList = List.of(
+                createMeal("Chicken Burger Meal", "Chicken Burger Meal With Fries And Coca-Cola", "",
+                        List.of(productList.get(0), productList.get(5), productList.get(7))),
+                createMeal("Veggie Burger meal", "Veggie Burger Meal With Fries And Coca-Cola", "",
+                        List.of(productList.get(2), productList.get(5), productList.get(7)))
+
+        );
+        mealRepository.saveAll(mealList);
+
+    }
+
+    public Location createLocation(String name, String address, Double lon, Double lat) {
+        Location location = new Location();
+        location.setName(name);
+        location.setAddress(address);
+        location.setLon(lon);
+        location.setLat(lat);
+        return location;
     }
 
     public Product createProduct(String name, String description, String image, String removableIngredients, Double price, String category) {
@@ -104,5 +116,19 @@ public class ApplicationInit implements CommandLineRunner {
         Category category = new Category();
         category.setName(name);
         return category;
+    }
+
+    public Meal createMeal(String name, String description, String image, List<Product> products) {
+        Meal meal = new Meal();
+        meal.setName(name);
+        meal.setDescription(description);
+        meal.setImage(image);
+        meal.setProducts(products);
+        double count = 0;
+        for (Product product : products) {
+            count += product.getPrice();
+        }
+        meal.setPrice(count * 0.9);
+        return meal;
     }
 }
