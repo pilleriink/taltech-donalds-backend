@@ -1,5 +1,6 @@
 package ee.taltech.backend;
 
+import ee.taltech.backend.model.advertisement.Advertisement;
 import ee.taltech.backend.model.category.Category;
 import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.location.Location;
@@ -27,7 +28,8 @@ public class ApplicationInit implements CommandLineRunner {
     private CommentRepository commentRepository;
     @Autowired
     MealRepository mealRepository;
-
+    @Autowired
+    private AdvertisementRepository advertisementRepository;
     @Override
     public void run(String... args) throws Exception {
         List<Category> categoryList = List.of(
@@ -90,7 +92,13 @@ public class ApplicationInit implements CommandLineRunner {
         );
         mealRepository.saveAll(mealList);
 
-    }
+        List<Advertisement> advertisementList = List.of(
+                new Advertisement("https://i.ibb.co/ctHpWhD/ttd1.jpg", "", "TTD ad1"),
+                new Advertisement("https://i.ibb.co/WsXDnXh/ttd2.jpg", "", "TTD ad2"),
+                new Advertisement("https://i.ibb.co/6RPWjqQ/ttd4.jpg", "", "TTD ad3")
+        );
+        advertisementRepository.saveAll(advertisementList);
+        }
 
     public Location createLocation(String name, String address, Double lon, Double lat) {
         Location location = new Location();
@@ -131,4 +139,5 @@ public class ApplicationInit implements CommandLineRunner {
         meal.setPrice(count * 0.9);
         return meal;
     }
+
 }
