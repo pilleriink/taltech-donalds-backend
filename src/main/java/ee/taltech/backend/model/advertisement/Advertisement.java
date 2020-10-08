@@ -16,7 +16,7 @@ public  class Advertisement {
     @Id
     @GeneratedValue
     private Long id;
-    private Image img; // todo probably should change the type
+    private String imgSrc;  //link to img
     private String link;
     private String alt;
 }
