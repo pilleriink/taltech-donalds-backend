@@ -21,11 +21,4 @@ public class Location {
     private Double lon;
     private Double lat;
 
-    public Location(Long id, String name, String address, Double lon, Double lat) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.lon = lon;
-        this.lat = lat;
-    }
 }

@@ -15,12 +15,10 @@ public class CommentService {
     @Autowired
     private CommentRepository commentRepository;
 
-    public Comment findById(Long id) throws CommentNotFoundException {
-        return commentRepository.findById(id)
-                .orElseThrow(CommentNotFoundException::new);
-    }
-
     public Comment createNewComment(Product product, CommentRequest request) throws InvalidCommentException {
+        if (product == null || request == null) {
+            throw new InvalidCommentException("Invalid comment request");
+        }
         Comment comment = new Comment();
         comment.setProduct(product);
         comment.setComment(request.getComment());
@@ -28,7 +26,7 @@ public class CommentService {
     }
 
     public Comment save(Comment comment) throws InvalidCommentException {
-        if(comment == null) {
+        if(comment == null || comment.getComment() == null || comment.getProduct() == null) {
             throw new InvalidCommentException("comment is invalid");
         }
         return commentRepository.save(comment);

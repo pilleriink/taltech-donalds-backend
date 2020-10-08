@@ -4,6 +4,7 @@ import ee.taltech.backend.model.category.Category;
 import ee.taltech.backend.model.category.CategoryMinifiedDto;
 import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.comment.CommentDto;
+import ee.taltech.backend.model.meal.MealMinifiedDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +24,7 @@ public class ProductDto {
     private List<Ingredient> removableIngredients;
     private List<CommentDto> comments;
     private CategoryMinifiedDto category;
+    private List<MealMinifiedDto> meals;
 
     public ProductDto(Product product) {
         id = product.getId();
@@ -34,5 +36,6 @@ public class ProductDto {
         removableIngredients = Arrays.stream(product.getRemovableIngredients().split(", "))
                 .map(Ingredient::new).collect(Collectors.toList());
         category = new CategoryMinifiedDto(product.getCategory());
+        meals = product.getMeals().stream().map(MealMinifiedDto::new).collect(Collectors.toList());
     }
 }

@@ -18,7 +18,7 @@ public class LocationController {
     private LocationService locationService;
 
     @GetMapping
-    public List<Location> getLocations(@RequestParam(value="name", required=false) String name) {
-        return locationService.findAll(name);
+    public List<Location> getLocations() {
+        return locationService.findAll();
     }
 }

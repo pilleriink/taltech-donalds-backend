@@ -13,7 +13,7 @@ public class LocationService {
     @Autowired
     private LocationRepository locationRepository;
 
-    public List<Location> findAll(String name) {
+    public List<Location> findAll() {
         return locationRepository.findAll();
     }
 }
