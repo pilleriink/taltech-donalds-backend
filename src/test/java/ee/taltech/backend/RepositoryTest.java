@@ -17,13 +17,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RepositoryTest {
 
     @Autowired
-    private ProductRepository productRepository;
-    @Autowired
     private CategoryRepository categoryRepository;
     @Autowired
     private LocationRepository locationRepository;
-    @Autowired
-    private CommentRepository commentRepository;
 
     @Test void addCategoryToRepository() {
         Category category = new Category();

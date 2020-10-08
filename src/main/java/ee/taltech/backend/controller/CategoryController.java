@@ -1,9 +1,7 @@
 package ee.taltech.backend.controller;
 
 import ee.taltech.backend.exception.CategoryNotFoundException;
-import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.exception.ProductNotFoundException;
-import ee.taltech.backend.model.category.Category;
 import ee.taltech.backend.model.category.CategoryDto;
 import ee.taltech.backend.model.category.CategoryMinifiedDto;
 import ee.taltech.backend.service.CategoryService;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin
 @RequestMapping("categories")
 @RestController
 public class CategoryController {
@@ -22,7 +19,7 @@ public class CategoryController {
     CategoryService categoryService;
 
     @GetMapping
-    public List<CategoryMinifiedDto> findAll() throws ProductNotFoundException {
+    public List<CategoryMinifiedDto> findAll() {
         return categoryService.findAll().stream().map(CategoryMinifiedDto::new).collect(Collectors.toList());
     }
 

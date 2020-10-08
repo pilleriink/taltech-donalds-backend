@@ -14,10 +14,19 @@ public class EmailServiceImpl {
     private JavaMailSender emailSender;
 
     public void sendSimpleMessage(ClientOrder clientOrder) {
+        emailSender.send(constructSimpleMailMessage(clientOrder));
+    }
+
+    public SimpleMailMessage constructSimpleMailMessage(ClientOrder clientOrder) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("taltechdonalds@gmail.com");
         message.setTo(clientOrder.getEmail());
         message.setSubject("TalTech Donald's Order Confirmation");
+        message.setText(constructEmail(clientOrder).toString());
+        return message;
+    }
+
+    public StringBuilder constructEmail(ClientOrder clientOrder) {
         StringBuilder text = new StringBuilder("Thank you for you order!\n \nOrder:\n \n");
         for (OrderProduct orderProduct : clientOrder.getOrderProducts()) {
             text.append(orderProduct.getName()).append(", price:").append(orderProduct.getPrice()).append("€");
@@ -28,7 +37,6 @@ public class EmailServiceImpl {
         }
         text.append("Order price:").append(clientOrder.getPrice()).append("€\n");
         text.append("Pick-up location: ").append(clientOrder.getLocation().getAddress());
-        message.setText(text.toString());
-        emailSender.send(message);
+        return text;
     }
 }

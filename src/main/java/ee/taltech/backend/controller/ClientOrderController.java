@@ -10,7 +10,6 @@ import ee.taltech.backend.service.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
 @RequestMapping("orders")
 @RestController
 public class ClientOrderController {

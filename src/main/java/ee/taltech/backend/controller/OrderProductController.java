@@ -11,7 +11,6 @@ import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin
 @RequestMapping("orderProducts")
 @RestController
 public class OrderProductController {
