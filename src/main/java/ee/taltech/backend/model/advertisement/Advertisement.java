@@ -15,8 +15,13 @@ import javax.persistence.Id;
 public  class Advertisement {
     @Id
     @GeneratedValue
-    private Long id;
-    private String imgSrc;  //link to img
+    private String image;  //link to img
     private String link;
     private String alt;
+
+    public Advertisement(String imgSrc, String link, String alt) {
+        this.image = imgSrc;
+        this.link = link;
+        this.alt = alt;
+    }
 }
