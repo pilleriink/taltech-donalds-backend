@@ -30,6 +30,7 @@ public class ApplicationInit implements CommandLineRunner {
     MealRepository mealRepository;
     @Autowired
     private AdvertisementRepository advertisementRepository;
+
     @Override
     public void run(String... args) throws Exception {
         List<Category> categoryList = List.of(
@@ -76,8 +77,8 @@ public class ApplicationInit implements CommandLineRunner {
         productRepository.saveAll(productList);
 
         List<Location> locationList = List.of(
-                createLocation("branch1", "Ehitajate tee 5, 19086 Tallinn Estonia",59.3943529, 24.668998869937695),
-                createLocation("branch2", "Raja 4, 12616 Tallinn Estonia",59.391073 , 24.6640777)
+                createLocation("branch1", "Ehitajate tee 5, 19086 Tallinn Estonia", 59.3943529, 24.668998869937695),
+                createLocation("branch2", "Raja 4, 12616 Tallinn Estonia", 59.391073, 24.6640777)
         );
         locationRepository.saveAll(locationList);
 
@@ -98,13 +99,17 @@ public class ApplicationInit implements CommandLineRunner {
             }
         }
 
-        List<Advertisement> advertisementList = List.of(
-                new Advertisement("https://i.ibb.co/ctHpWhD/ttd1.jpg", "", "TTD ad1"),
-                new Advertisement("https://i.ibb.co/WsXDnXh/ttd2.jpg", "", "TTD ad2"),
-                new Advertisement("https://i.ibb.co/6RPWjqQ/ttd4.jpg", "", "TTD ad3")
+        List<Advertisement> advertisementList = List.of(  // Big ads MUST have 'big' and small ads MUST have 'small' in alt.
+                new Advertisement("https://i.ibb.co/ctHpWhD/ttd1.jpg", "products/4", "TTD bigAd1"),
+                new Advertisement("https://i.ibb.co/WsXDnXh/ttd2.jpg", "products/5", "TTD bigAd2"),
+                new Advertisement("https://i.ibb.co/6RPWjqQ/ttd4.jpg", "products/6", "TTD bigAd3"),
+                new Advertisement("https://i.ibb.co/DK4JZTY/smallAd1.jpg", "locations", "TTD smallAd1"),
+                new Advertisement("https://i.ibb.co/xz4wkGQ/smallAd2.jpg", "categories/1", "TTD smallAd2"),
+                new Advertisement("https://i.ibb.co/tLXzZrz/ttd5.png", "cart", "TTD bigAd4")
         );
         advertisementRepository.saveAll(advertisementList);
-        }
+    }
+
 
     public Location createLocation(String name, String address, Double lon, Double lat) {
         Location location = new Location();
