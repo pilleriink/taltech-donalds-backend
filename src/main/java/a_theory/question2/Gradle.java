@@ -6,22 +6,19 @@ public class Gradle {
     // Since lesson 1 we've been using Gradle.
     // So, you think you know gradle?
 
-    //todo p1
     // In your words (do not use wiki definitions)
     // What is gradle?
-    // Answer:
+    // Answer: Tool that builds a software projects.
 
-    //todo p2
     // What is gradle wrapper? Why are we using it instead of gradle?
-    // Answer:
+    // Answer: Gradle wrapper manages Gradle, so that everyone in team has the same Gradle setup.
 
-    //todo p3
     // Name at least 1 alternative to gradle
     // 1 maven
 
     //todo p4
     // Name 3 different benefits or reasons for using gradle
-    // 1
+    // 1 It is a industry standard, so using Gradle is an important skill.
     // 2
     // 3
 

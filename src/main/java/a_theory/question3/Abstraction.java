@@ -8,7 +8,14 @@ public class Abstraction {
     //todo p1
     // In your words (do not use wiki definitions)
     // What is abstraction? (P.S It has nothing to do with keyword abstract)
-    // Answer:
+    // Answer: Hiding complexity behind functions
+    //
+    // Water drinking example:
+    // take(glass)
+    // glass.pourIn(water)
+    // glass.pourTo(mouth)
+    //
+    // Could be replaced with drink(water) that includes all steps above
 
     //todo p2
     // Create an abstraction of an animal of your choice.
