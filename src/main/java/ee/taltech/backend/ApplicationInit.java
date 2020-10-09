@@ -92,12 +92,13 @@ public class ApplicationInit implements CommandLineRunner {
         );
         mealRepository.saveAll(mealList);
 
-        List<Advertisement> advertisementList = List.of(
+        List<Advertisement> advertisementList = List.of(  // Big ads MUST have 'big' and small ads MUST have 'small' in alt.
                 new Advertisement("https://i.ibb.co/ctHpWhD/ttd1.jpg", "products/4", "TTD bigAd1"),
                 new Advertisement("https://i.ibb.co/WsXDnXh/ttd2.jpg", "products/5", "TTD bigAd2"),
                 new Advertisement("https://i.ibb.co/6RPWjqQ/ttd4.jpg", "products/6", "TTD bigAd3"),
                 new Advertisement("https://i.ibb.co/DK4JZTY/smallAd1.jpg", "locations", "TTD smallAd1"),
-                new Advertisement("https://i.ibb.co/xz4wkGQ/smallAd2.jpg", "categories/1", "TTD smallAd2")
+                new Advertisement("https://i.ibb.co/xz4wkGQ/smallAd2.jpg", "categories/1", "TTD smallAd2"),
+                new Advertisement("https://i.ibb.co/tLXzZrz/ttd5.png", "cart", "TTD bigAd4")
         );
         advertisementRepository.saveAll(advertisementList);
         }
