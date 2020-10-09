@@ -13,8 +13,10 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Entity
 public  class Advertisement {
+
     @Id
     @GeneratedValue
+    private Long id;
     private String image;  //link to img
     private String link;
     private String alt;
