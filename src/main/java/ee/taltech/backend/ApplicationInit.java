@@ -92,6 +92,12 @@ public class ApplicationInit implements CommandLineRunner {
         );
         mealRepository.saveAll(mealList);
 
+        for (Meal meal : mealList) {
+            for (Product product : meal.getProducts()) {
+                product.addMeal(meal);
+            }
+        }
+
         List<Advertisement> advertisementList = List.of(
                 new Advertisement("https://i.ibb.co/ctHpWhD/ttd1.jpg", "", "TTD ad1"),
                 new Advertisement("https://i.ibb.co/WsXDnXh/ttd2.jpg", "", "TTD ad2"),

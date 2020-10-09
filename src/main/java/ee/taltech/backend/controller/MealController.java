@@ -25,8 +25,8 @@ public class MealController {
     private MealService mealService;
 
     @GetMapping
-    public List<MealMinifiedDto> findAll() {
-        return mealService.findAll().stream().map(MealMinifiedDto::new).collect(Collectors.toList());
+    public List<MealDto> findAll() {
+        return mealService.findAll().stream().map(MealDto::new).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")

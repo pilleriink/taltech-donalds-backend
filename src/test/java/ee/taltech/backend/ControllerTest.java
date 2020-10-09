@@ -8,7 +8,9 @@ import ee.taltech.backend.model.category.CategoryMinifiedDto;
 import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.comment.CommentRequest;
 import ee.taltech.backend.model.location.Location;
+import ee.taltech.backend.model.meal.MealDto;
 import ee.taltech.backend.model.order.ClientOrder;
+import ee.taltech.backend.model.order.OrderMeal;
 import ee.taltech.backend.model.order.OrderProduct;
 import ee.taltech.backend.model.product.Product;
 import ee.taltech.backend.repository.CategoryRepository;
@@ -45,6 +47,12 @@ class ControllerTest {
     @Autowired
     private ProductController productController;
 
+    @Autowired
+    private OrderMealController orderMealController;
+
+    @Autowired
+    private MealController mealController;
+
     @Test
     void locationControllerGetResponse() {
         ResponseEntity<String> entity = testRestTemplate.getForEntity("/locations", String.class);
@@ -71,6 +79,13 @@ class ControllerTest {
     void productControllerThrowsExceptionWhenProductNotInDB() {
         assertThrows(ProductNotFoundException.class, () -> {
            productController.getProductById(999L);
+        });
+    }
+
+    @Test
+    void orderMealCategoryThrowsExcetionWhenMealIsEmpty() {
+        assertThrows(InvalidOrderMealException.class, () -> {
+            orderMealController.save(new OrderMeal());
         });
     }
 

@@ -3,26 +3,23 @@ package ee.taltech.backend.model.order;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.criterion.Order;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-public class OrderProduct {
+public class OrderMeal {
 
     @Id
     @GeneratedValue
     private Long id;
     private String name;
     private Double price;
-    private String removedIngredients;
     @ManyToOne
     private ClientOrder clientOrder;
-    @ManyToOne
-    private OrderMeal meal;
+    @OneToMany
+    private List<OrderProduct> orderProducts;
 }

@@ -5,6 +5,7 @@ import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.comment.CommentRequest;
 import ee.taltech.backend.model.location.Location;
 import ee.taltech.backend.model.order.ClientOrder;
+import ee.taltech.backend.model.order.OrderMeal;
 import ee.taltech.backend.model.order.OrderProduct;
 import ee.taltech.backend.model.product.Product;
 import ee.taltech.backend.service.*;
@@ -39,6 +40,8 @@ public class ServiceTest {
     OrderProductService orderProductService;
     @Autowired
     EmailServiceImpl emailService;
+    @Autowired
+    OrderMealService orderMealService;
 
     @Test
     public void productServiceGetProductById() throws ProductNotFoundException {
@@ -80,6 +83,23 @@ public class ServiceTest {
         orderProduct.setId(10L);
         assertThrows(InvalidOrderProductException.class, () -> {
             orderProductService.save(orderProduct);
+        });
+    }
+
+    @Test
+    void orderMealServiceThrowExceptionWhenEmptyMeal() {
+        OrderMeal orderMeal = new OrderMeal();
+        assertThrows(InvalidOrderMealException.class, () -> {
+            orderMealService.save(orderMeal);
+        });
+    }
+
+    @Test
+    void orderMealServiceThrowsExceptionWhenIdNotNull() {
+        OrderMeal orderMeal = new OrderMeal();
+        orderMeal.setId(10L);
+        assertThrows(InvalidOrderMealException.class, () -> {
+            orderMealService.save(orderMeal);
         });
     }
 

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -18,12 +19,13 @@ public class ClientOrder {
     @Id
     @GeneratedValue
     private Long id;
-    private String phoneNumber;
     private String email;
     private Double price;
     @ManyToOne
     private Location location;
     @OneToMany(mappedBy = "clientOrder", cascade = CascadeType.ALL)
-    private List<OrderProduct> orderProducts;
+    private List<OrderProduct> orderProducts = new ArrayList<>();
+    @OneToMany(mappedBy = "clientOrder", cascade = CascadeType.ALL)
+    private List<OrderMeal> orderMeals = new ArrayList<>();
 
 }

@@ -17,7 +17,6 @@ public class ClientOrderService {
     public ClientOrder save(ClientOrder clientOrder) throws InvalidOrderException {
         if (clientOrder.getEmail() == null
                 || clientOrder.getLocation() == null
-                || clientOrder.getPhoneNumber() == null
                 || clientOrder.getPrice() == null
                 || clientOrder.getOrderProducts() == null) {
             throw new InvalidOrderException("Invalid order");
