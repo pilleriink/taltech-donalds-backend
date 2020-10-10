@@ -134,19 +134,23 @@ public class ServiceTest {
                 " \n" +
                 "Order:\n" +
                 " \n" +
-                "0. Burger, price:2.0€\n" +
+                "0. Burger, price:2€\n" +
+                "\n" +
                 "Removed ingredients: peet, kapsas\n" +
                 " \n" +
-                "1. Burger, price:2.0€\n" +
+                "1. Burger, price:2€\n" +
+                "\n" +
                 "Removed ingredients: peet, kapsas\n" +
                 " \n" +
-                "2. Burger, price:2.0€\n" +
+                "2. Burger, price:2€\n" +
+                "\n" +
                 "Removed ingredients: peet, kapsas\n" +
                 " \n" +
-                "3. Burger, price:2.0€\n" +
+                "3. Burger, price:2€\n" +
+                "\n" +
                 "Removed ingredients: peet, kapsas\n" +
                 " \n" +
-                "Order price:10.0€\n" +
+                "Order price:10€\n" +
                 "Pick-up location: Ehitajate tee 5, 19086 Tallinn Estonia";
         assertEquals(emailService.constructEmail(clientOrder).toString(), text);
     }
