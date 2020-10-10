@@ -4,6 +4,7 @@ import ee.taltech.backend.exception.*;
 import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.comment.CommentRequest;
 import ee.taltech.backend.model.location.Location;
+import ee.taltech.backend.model.meal.MealMinifiedDto;
 import ee.taltech.backend.model.order.ClientOrder;
 import ee.taltech.backend.model.order.OrderMeal;
 import ee.taltech.backend.model.order.OrderProduct;
@@ -42,10 +43,12 @@ public class ServiceTest {
     EmailServiceImpl emailService;
     @Autowired
     OrderMealService orderMealService;
+    @Autowired
+    AdvertisementService advertisementService;
 
     @Test
-    public void productServiceGetProductById() throws ProductNotFoundException {
-        assertEquals(productService.findById(7L).getName(), "Naked burger");
+    void productServiceGetProductById() throws ProductNotFoundException {
+        assertEquals(productService.findById(7L).getName(), "Chicken nuggets");
     }
 
     @Test void categoryServiceFindAllNotEmpty() {
@@ -176,4 +179,5 @@ public class ServiceTest {
         assertSame(Objects.requireNonNull(simpleMailMessage.getFrom()), "taltechdonalds@gmail.com");
         assertSame(Objects.requireNonNull(simpleMailMessage.getSubject()), "TalTech Donald's Order Confirmation");
     }
+
 }

@@ -13,8 +13,7 @@ import javax.persistence.*;
 public class Comment {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    private Long id;
     //private String username;
     private String comment;
     @ManyToOne

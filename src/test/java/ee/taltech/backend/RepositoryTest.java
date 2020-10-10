@@ -37,6 +37,5 @@ public class RepositoryTest {
         location.setName("TTÜ");
         locationRepository.save(location);
         assertEquals(locationRepository.findAll().get(locationRepository.findAll().size() - 1).getName(), "TTÜ");
-
     }
 }

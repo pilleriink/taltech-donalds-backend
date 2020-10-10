@@ -16,8 +16,7 @@ import java.util.List;
 public class Category {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    private Long id;
     private String name;
     @OneToMany(mappedBy = "category")
     private List<Product> products = new ArrayList<>();

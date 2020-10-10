@@ -19,8 +19,7 @@ import java.util.List;
 public class Meal {
 
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    private Long id;
     private String name;
     private Double price;
     private String image;

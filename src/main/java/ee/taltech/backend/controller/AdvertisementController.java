@@ -17,7 +17,7 @@ public class AdvertisementController {
     AdvertisementService service;
 
     @GetMapping()
-    List<Advertisement> findAll() {
+    public List<Advertisement> findAll() {
         return service.findAll();
     }
 }

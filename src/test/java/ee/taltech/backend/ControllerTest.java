@@ -2,30 +2,16 @@ package ee.taltech.backend;
 
 import ee.taltech.backend.controller.*;
 import ee.taltech.backend.exception.*;
-import ee.taltech.backend.model.category.Category;
-import ee.taltech.backend.model.category.CategoryDto;
 import ee.taltech.backend.model.category.CategoryMinifiedDto;
-import ee.taltech.backend.model.comment.Comment;
-import ee.taltech.backend.model.comment.CommentRequest;
-import ee.taltech.backend.model.location.Location;
-import ee.taltech.backend.model.meal.MealDto;
-import ee.taltech.backend.model.order.ClientOrder;
 import ee.taltech.backend.model.order.OrderMeal;
 import ee.taltech.backend.model.order.OrderProduct;
-import ee.taltech.backend.model.product.Product;
-import ee.taltech.backend.repository.CategoryRepository;
-import ee.taltech.backend.repository.LocationRepository;
-import ee.taltech.backend.repository.ProductRepository;
-import org.junit.jupiter.api.BeforeEach;
+import ee.taltech.backend.model.product.ProductDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,24 +20,43 @@ class ControllerTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
-
     @Autowired
     private LocationController locationController;
-
     @Autowired
     private CategoryController categoryController;
-
     @Autowired
     private OrderProductController orderProductController;
-
     @Autowired
     private ProductController productController;
-
     @Autowired
     private OrderMealController orderMealController;
-
     @Autowired
-    private MealController mealController;
+    private AdvertisementController advertisementController;
+
+    @Test
+    void categoryControllerGetResponse() {
+        ResponseEntity<String> entity = testRestTemplate.getForEntity("/categories/1", String.class);
+        assertEquals(HttpStatus.OK, entity.getStatusCode());
+    }
+
+    @Test
+    void productControllerGetResponse() {
+        ResponseEntity<String> entity = testRestTemplate.getForEntity("/products/1", String.class);
+        assertEquals(HttpStatus.OK, entity.getStatusCode());
+
+    }
+
+    @Test
+    void mealControllerGetResponseFindAll() {
+        ResponseEntity<String> entity = testRestTemplate.getForEntity("/meals", String.class);
+        assertEquals(HttpStatus.OK, entity.getStatusCode());
+    }
+
+    @Test
+    void mealControllerGetResponseById() {
+        ResponseEntity<String> entity = testRestTemplate.getForEntity("/meals/1", String.class);
+        assertEquals(HttpStatus.OK, entity.getStatusCode());
+    }
 
     @Test
     void locationControllerGetResponse() {
@@ -60,8 +65,19 @@ class ControllerTest {
     }
 
     @Test
+    void advertisementControllerGetResponse() {
+        ResponseEntity<String> entity = testRestTemplate.getForEntity("/ads", String.class);
+        assertEquals(HttpStatus.OK, entity.getStatusCode());
+    }
+
+    @Test
+    void advertisementControllerGetAds() {
+        assertTrue(advertisementController.findAll().size() > 0);
+    }
+
+    @Test
     void locationControllerGetLocations() {
-        assertEquals(locationController.getLocations().size(), 2);
+        assertTrue(locationController.getLocations().size() > 0);
     }
 
     @Test void categoryControllerFindAll() {
@@ -83,7 +99,7 @@ class ControllerTest {
     }
 
     @Test
-    void orderMealCategoryThrowsExcetionWhenMealIsEmpty() {
+    void orderMealCategoryThrowsExceptionWhenMealIsEmpty() {
         assertThrows(InvalidOrderMealException.class, () -> {
             orderMealController.save(new OrderMeal());
         });
