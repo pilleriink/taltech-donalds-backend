@@ -4,3 +4,5 @@ Team members:
 - Pilleriin Kõiva
 - Mattias Malk
 - Song Huong Pham Thi
+
+[Wiki](https://gitlab.cs.ttu.ee/pikoiv/iti0203-2020-team31-backend/-/wikis/Fast-food-restaurant-webpage)
