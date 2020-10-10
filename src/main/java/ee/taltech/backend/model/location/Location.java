@@ -15,7 +15,8 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Location {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String address;
     private Double lon;

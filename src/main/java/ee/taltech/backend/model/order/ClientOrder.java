@@ -17,7 +17,8 @@ import java.util.List;
 public class ClientOrder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String email;
     private Double price;
     @ManyToOne

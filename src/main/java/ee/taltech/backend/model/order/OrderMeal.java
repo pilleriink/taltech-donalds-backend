@@ -14,11 +14,12 @@ import java.util.List;
 public class OrderMeal {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private Double price;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private ClientOrder clientOrder;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<OrderProduct> orderProducts;
 }
