@@ -1,6 +1,6 @@
-##backend
+TalTech Donald's is a fast food reastaurant webpage that allows customers to order products directly from the website.
 
-### Swagger
-
-http://localhost:8080/v2/api-docs
-http://localhost:8080/swagger-ui/
+Team members:
+- Pilleriin Kõiva
+- Mattias Malk
+- Song Huong Pham Thi

@@ -1,5 +1,7 @@
 package a_theory.question6.sheep;
 
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 public class SheepFarm {
@@ -23,11 +25,22 @@ public class SheepFarm {
     // I need a backoffice system for my sheep.
     // The sheep in Ireland are in flux. They come, they go.
     // There are new sheep coming here all the time. I need to store new sheep to the database.
+    @PostMapping
+    Sheep addSheep(@RequestBody Sheep sheep) {
+        return sheep;
+    }
     // And then there are sheep leaving. They run away. I remember all my sheep.
     // The ones that are not there I want to remove them from my database.
+    @DeleteMapping("/{id}")
+    void deleteSheep(@PathVariable Long id) {
+    }
     // Each sheep has a unique collar with a special code. I've always numbered my sheep.
     // Special code is just a number. It's a basic incrementing number, but I call it special because I can.
     // I want to access sheep details, it's name, age, everything using that code.
+    @GetMapping("/{id}")
+    Sheep getSheep(@PathVariable Long id) {
+        return new Sheep();
+    }
     // That's it. Can you do that for me?
 
     //todo here are some examples of empty methods
