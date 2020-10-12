@@ -1,3 +1,12 @@
+services:
+  - postgres:12.2-alpine
+
+variables:
+  POSTGRES_DB: echo $POSTGRES_DB
+  POSTGRES_USER: echo $POSTGRES_USER
+  POSTGRES_PASSWORD: echo $POSTGRES_PASSWORD
+  POSTGRES_HOST_AUTH_METHOD: echo $POSTGRES_HOST_AUTH_METHOD
+
 stages:
   - build
   - test
