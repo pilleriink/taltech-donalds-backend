@@ -11,7 +11,7 @@ import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("orderProducts")
+@RequestMapping("order/products")
 @RestController
 public class OrderProductController {
 
