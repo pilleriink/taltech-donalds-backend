@@ -9,7 +9,7 @@ public class FirstReadMeSOLID {
     // I would like you to tell me what solid is and then explain in detail each part of the principle.
     // What is solid?
     // S (Nr1isS.java) stands for Single-responsibility and is done by Oleg Pahhomov as an example
-    // O (Nr2isO.java)
+    // O (Nr2isO.java) stands for Open-Closed Principle (OCP) and is done by Pilleriin Kõiva
     // L (Nr3isL.java)
     // I (Nr4isI.java)
     // D (Nr5isD.java)
