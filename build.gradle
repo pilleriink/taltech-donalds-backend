@@ -32,6 +32,10 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/org.postgresql/postgresql
 	compile group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
+
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '3.0.0'
+
 }
 
 test {
