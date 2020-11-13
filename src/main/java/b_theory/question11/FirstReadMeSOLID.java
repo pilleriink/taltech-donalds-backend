@@ -10,7 +10,7 @@ public class FirstReadMeSOLID {
     // What is solid?
     // S (Nr1isS.java) stands for Single-responsibility and is done by Oleg Pahhomov as an example
     // O (Nr2isO.java) stands for Open-Closed Principle (OCP) and is done by Pilleriin Kõiva
-    // L (Nr3isL.java)
+    // L (Nr3isL.java) stands for Liskov substitution principle and is done by Song Huong Pham Thi
     // I (Nr4isI.java) stands for Interface Segregation Principle (ISP) and is done by Mattias Malk
-    // D (Nr5isD.java)
+    // D (Nr5isD.java) stands for Dependency Inversion principle and is done by Song Huong Pham Thi
 }

@@ -23,7 +23,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/programm
     driverClassName: org.postgresql.Driver
-    username: postgres
+    username: runner
     password: password
     platform: POSTGRES
 logging:
