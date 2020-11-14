@@ -32,12 +32,24 @@ deploy donald:
   only:
     refs:
       - master
-      - feature/ci-cd
   tags:
     - donald
   script:
     - mkdir -p ~/api-deployment # mkdir make folder api-deployment ~/ is under current user directory so for gitlab it would be /home/gitlab/api-deployment
     - rm -rf ~/api-deployment/* # rm remove -rf is recursive files from api-deployment
     - cp -r build/libs/. ~/api-deployment # cp - copy build/libs is where
+    - sudo systemctl restart donald
+
+deploy dev-donald:
+  stage: deploy
+  only:
+    refs:
+      - feature/ci-cd
+  tags:
+    - donald
+  script:
+    - mkdir -p ~/dev-api-deployment # mkdir make folder api-deployment ~/ is under current user directory so for gitlab it would be /home/gitlab/api-deployment
+    - rm -rf ~/dev-api-deployment/* # rm remove -rf is recursive files from api-deployment
+    - cp -r build/libs/. ~/dev-api-deployment # cp - copy build/libs is where
     - sudo systemctl restart donald
 
