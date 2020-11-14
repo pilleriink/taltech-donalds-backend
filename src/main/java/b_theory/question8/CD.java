@@ -27,5 +27,5 @@ public class CD {
     //todo F
     // Which one is more important to start with CI or CD? Why?
     // CI/CD:
-    // Because:
+    // Because: CI because without CI the system doesn't know when to deploy
 }

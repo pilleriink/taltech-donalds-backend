@@ -8,7 +8,8 @@ public class Docker {
 
     //todo B
     // What is the difference between build server and production server?
-    // Answer: Usually the difference is in security. A build server allows unrestricted access and control to a group of users. A production server is configuerd to restrict access to authorized users and limit control
+    // Answer: Usually the difference is in security. A build server allows unrestricted access and control to a group of users.
+    // A production server is configuerd to restrict access to authorized users and limit control
 
     //todo C
     // What is docker?

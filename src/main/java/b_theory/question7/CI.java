@@ -12,9 +12,9 @@ public class CI {
 
     //todo C
     // In the class we had 3 stages in our CI/CD process, tick [x] which ones stand for continuous integration
-    // [] compile
-    // [] test
-    // [x] deploy
+    // [x] compile
+    // [x] test
+    // [] deploy
 
     //todo D
     // Name and explain 1 benefit of CI
