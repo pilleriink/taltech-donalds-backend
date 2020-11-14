@@ -1,9 +1,5 @@
 package a_theory.question4;
 
-import ee.taltech.backend.model.product.Product;
-
-import javax.persistence.*;
-
 public class DependencyInjection {
 
     //todo

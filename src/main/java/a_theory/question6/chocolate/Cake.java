@@ -2,11 +2,7 @@ package a_theory.question6.chocolate;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.util.List;
 
 @RequiredArgsConstructor

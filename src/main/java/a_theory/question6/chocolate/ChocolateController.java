@@ -1,12 +1,16 @@
 package a_theory.question6.chocolate;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequestMapping("chocolate")
 @RestController
-public class Chocolate {
+public class ChocolateController {
+
+    @Autowired
+    ChocolateService chocolateService;
 
     //todo for question 6 there are 4 assignments in total
     // Each person has to do only 1. So 2 person team has to do 2 different ones, 3 person - 3, 4 person - 4.
@@ -31,16 +35,22 @@ public class Chocolate {
     // In addition I want to search by ingredients and toppings, these are not necessary.
     @GetMapping
     List<Cake> getCakes(@RequestParam(value = "ingredients", required = false) List<String> ingredients,
-                        @RequestParam(value = "toppings", required = false) List<String> toppings) {return List.of();}
+                        @RequestParam(value = "toppings", required = false) List<String> toppings) {
+        return chocolateService.getCakes(ingredients, toppings);}
+
 
     // I strive for perfection.
     // Every day I bake a new cake. I must add it to the cakes. Sell it to my loyal customers.
     @PostMapping
-    Cake addCake(@RequestBody Cake cake) {return  cake;}
+    Cake addCake(@RequestBody Cake cake) {
+        return chocolateService.addCake(cake);
+    }
 
     // I also make my cakes better. I am an artist and I improve my recipes.
     @PutMapping("{id}")
-    Cake updateCake(@RequestBody Cake cake, @PathVariable Long id) {return cake;}
+    Cake updateCake(@RequestBody Cake cake, @PathVariable Long id) {
+        return chocolateService.updateCake(cake, id);
+    }
 
     // I take existing Sachertorte and I make it better and next week I make it better and next week...
     // Can you do this? I need this system tomorrow!
