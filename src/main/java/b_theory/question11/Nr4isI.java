@@ -12,28 +12,28 @@ public class Nr4isI {
 
 //todo B Give an example. Write actual or pseudo code.
 interface PhysicalRemoteBefore {
-    void moveUp(DirectionInput input);
-    void moveUpLeft(DirectionInput input);
-    void moveLeft(DirectionInput input);
+    void moveUp(DirectionInput.Direction input);
+    void moveUpLeft(DirectionInput.Direction input);
+    void moveLeft(DirectionInput.Direction input);
 }
 
 class TvRemoteBefore implements PhysicalRemoteBefore{
 
     @Override
-    public void moveUp(DirectionInput input) {
+    public void moveUp(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP) {
             moveUp();
         }
     }
 
     @Override
-    public void moveUpLeft(DirectionInput input) {
+    public void moveUpLeft(DirectionInput.Direction input) {
         // TV remote physically unable to move in diagonals
         // so I have to implement this as a dummy method.
     }
 
     @Override
-    public void moveLeft(DirectionInput input) {
+    public void moveLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.LEFT) {
             moveLeft();
         }
@@ -43,21 +43,21 @@ class TvRemoteBefore implements PhysicalRemoteBefore{
 class GameRemoteBefore implements PhysicalRemoteBefore {
 
     @Override
-    public void moveUp(DirectionInput input) {
+    public void moveUp(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP) {
             moveUp();
         }
     }
 
     @Override
-    public void moveUpLeft(DirectionInput input) {
+    public void moveUpLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP_LEFT) {
             moveUpLeft();
         }
     }
 
     @Override
-    public void moveLeft(DirectionInput input) {
+    public void moveLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.LEFT) {
             moveLeft();
         }
@@ -65,25 +65,25 @@ class GameRemoteBefore implements PhysicalRemoteBefore {
 }
 
 interface PhysicalRemoteBasic {
-    void moveUp(DirectionInput input);
-    void moveLeft(DirectionInput input);
+    void moveUp(DirectionInput.Direction input);
+    void moveLeft(DirectionInput.Direction input);
 }
 
 interface PhysicalRemoteAdvanced {
-    void moveUpLeft(DirectionInput input);
+    void moveUpLeft(DirectionInput.Direction input);
 }
 
 class TvRemote implements PhysicalRemoteBasic {
 
     @Override
-    public void moveUp(DirectionInput input) {
+    public void moveUp(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP) {
             moveUp();
         }
     }
 
     @Override
-    public void moveLeft(DirectionInput input) {
+    public void moveLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.LEFT) {
             moveLeft();
         }
@@ -93,21 +93,21 @@ class TvRemote implements PhysicalRemoteBasic {
 class GameRemote implements PhysicalRemoteBasic, PhysicalRemoteAdvanced {
 
     @Override
-    public void moveUp(DirectionInput input) {
+    public void moveUp(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP) {
             moveUp();
         }
     }
 
     @Override
-    public void moveLeft(DirectionInput input) {
+    public void moveLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.LEFT) {
             moveLeft();
         }
     }
 
     @Override
-    public void moveUpLeft(DirectionInput input) {
+    public void moveUpLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP_LEFT) {
             moveUpLeft();
         }
