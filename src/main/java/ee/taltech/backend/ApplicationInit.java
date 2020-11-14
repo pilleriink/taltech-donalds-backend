@@ -111,7 +111,6 @@ public class ApplicationInit implements CommandLineRunner {
         advertisementRepository.saveAll(advertisementList);
     }
 
-
     public Location createLocation(String name, String address, Double lon, Double lat) {
         Location location = new Location();
         location.setName(name);
