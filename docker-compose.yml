@@ -3,7 +3,7 @@ services:
   database:
     image: postgres
     environment:
-      -
+      - POSTGRES_USERNAME=postgres
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=programm
       - PGDATA=/var/lib/postgresql/data/pgdata
