@@ -22,7 +22,7 @@ class TvRemoteBefore implements PhysicalRemoteBefore{
     @Override
     public void moveUp(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP) {
-            moveUp();
+//            TV.moveUp();
         }
     }
 
@@ -35,7 +35,7 @@ class TvRemoteBefore implements PhysicalRemoteBefore{
     @Override
     public void moveLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.LEFT) {
-            moveLeft();
+//            TV.moveLeft();
         }
     }
 }
@@ -45,21 +45,21 @@ class GameRemoteBefore implements PhysicalRemoteBefore {
     @Override
     public void moveUp(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP) {
-            moveUp();
+//            GameConsole.moveUp();
         }
     }
 
     @Override
     public void moveUpLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP_LEFT) {
-            moveUpLeft();
+//            GameConsole.moveUpLeft();
         }
     }
 
     @Override
     public void moveLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.LEFT) {
-            moveLeft();
+//            GameConsole.moveLeft();
         }
     }
 }
@@ -78,14 +78,14 @@ class TvRemote implements PhysicalRemoteBasic {
     @Override
     public void moveUp(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP) {
-            moveUp();
+//            TV.moveUp();
         }
     }
 
     @Override
     public void moveLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.LEFT) {
-            moveLeft();
+//            TV.moveLeft();
         }
     }
 }
@@ -95,21 +95,21 @@ class GameRemote implements PhysicalRemoteBasic, PhysicalRemoteAdvanced {
     @Override
     public void moveUp(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP) {
-            moveUp();
+//            GameConsole.moveUp();
         }
     }
 
     @Override
     public void moveLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.LEFT) {
-            moveLeft();
+//            GameConsole.moveLeft();
         }
     }
 
     @Override
     public void moveUpLeft(DirectionInput.Direction input) {
         if (input == DirectionInput.Direction.UP_LEFT) {
-            moveUpLeft();
+//            GameConsole.moveUpLeft();
         }
     }
 
