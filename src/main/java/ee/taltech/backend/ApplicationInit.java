@@ -85,7 +85,8 @@ public class ApplicationInit implements CommandLineRunner {
         commentRepository.save(new Comment(1L, "this burger is great!", productRepository.findByName("Chicken burger")));
 
         List<Meal> mealList = List.of(
-                createMeal("Chicken Burger Meal", "Chicken Burger Meal With Fries And Coca-Cola", "",
+                createMeal("Chicken Burger Meal", "Chicken Burger Meal With Fries And Coca-Cola",
+                        "https://charlixplace.com/wp-content/uploads/2020/06/burger.jpg",
                         List.of(productList.get(0), productList.get(5), productList.get(7))),
                 createMeal("Veggie Burger meal", "Veggie Burger Meal With Fries And Coca-Cola", "",
                         List.of(productList.get(2), productList.get(5), productList.get(7)))
