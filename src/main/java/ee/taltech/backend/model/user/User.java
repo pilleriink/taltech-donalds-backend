@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name="users")
 public class User {
     @Id
     @GeneratedValue
