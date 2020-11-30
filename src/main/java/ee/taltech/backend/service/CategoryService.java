@@ -4,10 +4,12 @@ import ee.taltech.backend.exception.CategoryNotFoundException;
 import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.category.Category;
+import ee.taltech.backend.model.category.CategoryDto;
 import ee.taltech.backend.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,5 +27,17 @@ public class CategoryService {
                 .orElseThrow(CategoryNotFoundException::new);
     }
 
+    public CategoryDto save(CategoryDto categoryDto) {
+        Category category = new Category();
+        category.setName(categoryDto.getName());
+        category.setProducts(new ArrayList<>());
+        Category save = categoryRepository.save(category);
+        return new CategoryDto(save);
+    }
+
+    public void delete(Long id) throws CategoryNotFoundException {
+        Category category = findById(id);
+        categoryRepository.delete(category);
+    }
 
 }

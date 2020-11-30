@@ -7,12 +7,11 @@ import ee.taltech.backend.model.category.CategoryMinifiedDto;
 import ee.taltech.backend.model.meal.Meal;
 import ee.taltech.backend.model.meal.MealDto;
 import ee.taltech.backend.model.meal.MealMinifiedDto;
+import ee.taltech.backend.security.Roles;
 import ee.taltech.backend.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,5 +31,23 @@ public class MealController {
     @GetMapping("/{id}")
     public MealDto getCategoryById(@PathVariable Long id) throws MealNotFoundException {
         return new MealDto(mealService.findById(id));
+    }
+
+    @Secured(Roles.ADMIN)
+    @PostMapping
+    public MealDto save(@RequestBody MealDto mealDto){
+        return mealService.save(mealDto);
+    }
+
+    @Secured(Roles.ADMIN)
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Long id) throws MealNotFoundException {
+        mealService.delete(id);
+    }
+
+    @Secured(Roles.ADMIN)
+    @PutMapping("{id}")
+    public MealDto update(@RequestBody MealDto mealDto, @PathVariable Long id) throws MealNotFoundException {
+        return mealService.update(mealDto, id);
     }
 }

@@ -16,4 +16,5 @@ public class AdvertisementService {
     public List<Advertisement> findAll() {
         return advertisementRepository.findAll();
     }
+
 }

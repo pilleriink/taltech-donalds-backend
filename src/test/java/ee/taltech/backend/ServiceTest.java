@@ -8,7 +8,7 @@ import ee.taltech.backend.model.order.OrderMeal;
 import ee.taltech.backend.model.order.OrderProduct;
 import ee.taltech.backend.service.*;
 import ee.taltech.backend.service.order.ClientOrderService;
-import ee.taltech.backend.service.order.EmailServiceImpl;
+import ee.taltech.backend.service.EmailServiceImpl;
 import ee.taltech.backend.service.order.OrderMealService;
 import ee.taltech.backend.service.order.OrderProductService;
 import org.junit.jupiter.api.Test;
