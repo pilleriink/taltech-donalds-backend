@@ -1,4 +1,4 @@
-package ee.taltech.backend.service;
+package ee.taltech.backend.service.order;
 
 import ee.taltech.backend.exception.InvalidOrderException;
 import ee.taltech.backend.exception.InvalidProductException;
@@ -21,6 +21,7 @@ public class ClientOrderService {
                 || clientOrder.getOrderProducts() == null) {
             throw new InvalidOrderException("Invalid order");
         }
+
         return clientOrderRepository.save(clientOrder);
     }
 

@@ -2,26 +2,21 @@ package ee.taltech.backend;
 
 import ee.taltech.backend.exception.*;
 import ee.taltech.backend.model.comment.Comment;
-import ee.taltech.backend.model.comment.CommentRequest;
 import ee.taltech.backend.model.location.Location;
-import ee.taltech.backend.model.meal.MealMinifiedDto;
 import ee.taltech.backend.model.order.ClientOrder;
 import ee.taltech.backend.model.order.OrderMeal;
 import ee.taltech.backend.model.order.OrderProduct;
-import ee.taltech.backend.model.product.Product;
 import ee.taltech.backend.service.*;
-import org.junit.jupiter.api.Order;
+import ee.taltech.backend.service.order.ClientOrderService;
+import ee.taltech.backend.service.order.EmailServiceImpl;
+import ee.taltech.backend.service.order.OrderMealService;
+import ee.taltech.backend.service.order.OrderProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;

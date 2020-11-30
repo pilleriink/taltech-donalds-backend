@@ -1,4 +1,4 @@
-package ee.taltech.backend.service;
+package ee.taltech.backend.service.order;
 
 import ee.taltech.backend.model.order.ClientOrder;
 import ee.taltech.backend.model.order.OrderMeal;

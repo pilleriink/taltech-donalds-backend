@@ -1,12 +1,9 @@
 package ee.taltech.backend.controller;
 
 import ee.taltech.backend.exception.InvalidOrderException;
-import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.model.order.ClientOrder;
-import ee.taltech.backend.model.order.OrderProduct;
-import ee.taltech.backend.repository.ClientOrderRepository;
-import ee.taltech.backend.service.ClientOrderService;
-import ee.taltech.backend.service.EmailServiceImpl;
+import ee.taltech.backend.service.order.ClientOrderService;
+import ee.taltech.backend.service.order.EmailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
