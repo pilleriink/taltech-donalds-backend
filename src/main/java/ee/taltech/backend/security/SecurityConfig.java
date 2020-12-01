@@ -50,6 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable() // cross site request forgery, it's a must if we use cookies
                 .headers().httpStrictTransportSecurity().disable() // if this is not disabled your https frontend must have https (not http) on backend
                 .and()
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement().sessionCreationPolicy(STATELESS) // this is a must for API, API just returns answers, doesn't know anything about any sessions (front-end manages that)
                 .and()
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
@@ -59,10 +60,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/users/register").permitAll() //so guest can register
                 .antMatchers("/users/login").permitAll() //so guest can login
                 .antMatchers("/categories").permitAll()
+                .antMatchers("/categories/**").permitAll()
                 .antMatchers("/products").permitAll()
+                .antMatchers("/products/**").permitAll()
                 .antMatchers("/meals").permitAll()
+                .antMatchers("/meals/**").permitAll()
                 .antMatchers("/locations").permitAll()
                 .antMatchers("/ads").permitAll()
+                .antMatchers("/comments").permitAll()
                 .anyRequest().authenticated();
 
     }

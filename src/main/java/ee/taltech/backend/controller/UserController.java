@@ -7,12 +7,14 @@ import ee.taltech.backend.model.user.RegisterDto;
 import ee.taltech.backend.model.user.UserDto;
 import ee.taltech.backend.security.JwtTokenProvider;
 import ee.taltech.backend.security.MyUserDetailsService;
+import ee.taltech.backend.security.Roles;
 import ee.taltech.backend.security.UserSessionHolder;
 import ee.taltech.backend.service.users.LoginService;
 import ee.taltech.backend.service.users.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,6 +37,7 @@ public class UserController {
         return loginService.login(loginDto);
     }
 
+    @Secured({Roles.ADMIN, Roles.USER})
     @GetMapping("me")
     public Object getMe() {
         return UserSessionHolder.getLoggedInUser();

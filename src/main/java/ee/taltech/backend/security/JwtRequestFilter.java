@@ -34,7 +34,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
+        System.out.println("tetteette2tetete");
         String jwtToken = getToken(request);
+        System.out.println(jwtToken);
         if (jwtToken == null) {
             //passing without authentication to another steps
             chain.doFilter(request, response);
@@ -73,6 +75,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     private String getToken(HttpServletRequest request) {
         final String requestTokenHeader = request.getHeader(AUTHORIZATION);
+        System.out.println(requestTokenHeader);
         if (requestTokenHeader == null || !requestTokenHeader.startsWith(BEARER_)) {
             return null;
         }

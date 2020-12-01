@@ -3,6 +3,8 @@ package ee.taltech.backend.security;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,7 +12,8 @@ import org.springframework.stereotype.Component;
  */
 @Getter
 @Setter
-@Component
+@Configuration
+@EnableConfigurationProperties
 @ConfigurationProperties(prefix = "jwt")
 public class JwtConfig {
     private String secret;
