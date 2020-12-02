@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 @RequestMapping("meals")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MealController {
 
     @Autowired

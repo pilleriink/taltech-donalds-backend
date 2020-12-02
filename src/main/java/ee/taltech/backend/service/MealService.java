@@ -36,7 +36,16 @@ public class MealService {
     public MealDto save(MealDto mealDto) {
         Meal meal = new Meal();
         meal.setName(mealDto.getName());
-        meal.setProducts(new ArrayList<>()); //needs to have products, not empty list
+        List<ProductDto> productDtos = mealDto.getProducts();
+        List<Product> products = new ArrayList<>();
+        for (ProductDto productDto : productDtos) {
+            Product product = productRepository.findById(productDto.getId()).orElseThrow();
+            products.add(product);
+        }
+        meal.setProducts(products);
+        meal.setPrice(mealDto.getPrice());
+        meal.setDescription(mealDto.getDescription());
+        meal.setImage(mealDto.getImage());
         Meal save = mealRepository.save(meal);
         return new MealDto(save);
     }
@@ -46,17 +55,4 @@ public class MealService {
         mealRepository.delete(meal);
     }
 
-    public MealDto update(MealDto mealDto, Long id) throws MealNotFoundException {
-        Meal meal = findById(id);
-        List<ProductDto> productDtos = mealDto.getProducts();
-        List<Product> products = new ArrayList<>();
-        meal.setProducts(new ArrayList<>());
-        for (ProductDto productDto : productDtos) {
-            Product product = productRepository.findById(productDto.getId()).orElseThrow();
-            products.add(product);
-        }
-        meal.setProducts(products);
-        Meal save = mealRepository.save(meal);
-        return new MealDto(save);
-    }
 }
