@@ -2,6 +2,7 @@ package ee.taltech.backend.model.category;
 
 import ee.taltech.backend.model.product.ProductDto;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.stream.Collectors;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class CategoryDto {
 
     private Long id;

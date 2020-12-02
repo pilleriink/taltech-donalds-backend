@@ -6,14 +6,17 @@ import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.comment.CommentDto;
 import ee.taltech.backend.model.meal.MealMinifiedDto;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class ProductDto {
 
     private Long id;
@@ -21,7 +24,7 @@ public class ProductDto {
     private Double price;
     private String image;
     private String description;
-    private List<Ingredient> removableIngredients;
+    private String removableIngredients;
     private List<CommentDto> comments;
     private CategoryMinifiedDto category;
     private List<MealMinifiedDto> meals;
@@ -33,8 +36,7 @@ public class ProductDto {
         image = product.getImage();
         comments = product.getComments().stream().map(CommentDto::new).collect(Collectors.toList());
         description = product.getDescription();
-        removableIngredients = Arrays.stream(product.getRemovableIngredients().split(", "))
-                .map(Ingredient::new).collect(Collectors.toList());
+        removableIngredients = product.getRemovableIngredients();
         category = new CategoryMinifiedDto(product.getCategory());
         meals = product.getMeals().stream().map(MealMinifiedDto::new).collect(Collectors.toList());
     }

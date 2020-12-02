@@ -3,6 +3,7 @@ package ee.taltech.backend.model.meal;
 import ee.taltech.backend.model.category.Category;
 import ee.taltech.backend.model.product.ProductDto;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.SecondaryTables;
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class MealDto {
 
     private Long id;

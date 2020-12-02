@@ -35,7 +35,7 @@ public class MealService {
 
     public MealDto save(MealDto mealDto) {
         Meal meal = new Meal();
-        meal.setName(meal.getName());
+        meal.setName(mealDto.getName());
         meal.setProducts(new ArrayList<>()); //needs to have products, not empty list
         Meal save = mealRepository.save(meal);
         return new MealDto(save);
