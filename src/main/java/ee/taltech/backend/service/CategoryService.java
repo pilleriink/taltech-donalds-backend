@@ -5,7 +5,12 @@ import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.category.Category;
 import ee.taltech.backend.model.category.CategoryDto;
+import ee.taltech.backend.model.meal.Meal;
+import ee.taltech.backend.model.product.Product;
+import ee.taltech.backend.model.product.ProductDto;
 import ee.taltech.backend.repository.CategoryRepository;
+import ee.taltech.backend.repository.MealRepository;
+import ee.taltech.backend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +22,10 @@ public class CategoryService {
 
     @Autowired
     CategoryRepository categoryRepository;
+    @Autowired
+    ProductRepository productRepository;
+    @Autowired
+    ProductService productService;
 
     public List<Category> findAll() {
         return categoryRepository.findAll();
@@ -35,8 +44,14 @@ public class CategoryService {
         return new CategoryDto(save);
     }
 
-    public void delete(Long id) throws CategoryNotFoundException {
+    public void delete(Long id) throws CategoryNotFoundException, ProductNotFoundException {
         Category category = findById(id);
+        List<Product> products = productRepository.findAllByCategory(category);
+        for (Product product : products) {
+            category.getProducts().remove(product);
+            categoryRepository.save(category);
+            productService.delete(product.getId());
+        }
         categoryRepository.delete(category);
     }
 

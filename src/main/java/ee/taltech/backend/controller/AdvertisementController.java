@@ -12,6 +12,7 @@ import java.util.List;
 
 @RequestMapping("ads")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AdvertisementController {
 
     @Autowired

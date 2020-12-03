@@ -25,6 +25,6 @@ public class Meal {
     private Double price;
     private String image;
     private String description;
-    @ManyToMany
+    @ManyToMany()
     private List<Product> products = new ArrayList<>();
 }

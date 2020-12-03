@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("order/products")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class OrderProductController {
 
     @Autowired

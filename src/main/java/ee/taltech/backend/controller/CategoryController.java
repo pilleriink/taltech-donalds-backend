@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @RequestMapping("categories")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoryController {
 
     @Autowired
@@ -38,7 +39,7 @@ public class CategoryController {
 
     @Secured(Roles.ADMIN)
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Long id) throws CategoryNotFoundException {
+    public void delete(@PathVariable Long id) throws CategoryNotFoundException, ProductNotFoundException {
         categoryService.delete(id);
     }
 }

@@ -46,9 +46,4 @@ public class MealController {
         mealService.delete(id);
     }
 
-    @Secured(Roles.ADMIN)
-    @PutMapping("{id}")
-    public MealDto update(@RequestBody MealDto mealDto, @PathVariable Long id) throws MealNotFoundException {
-        return mealService.update(mealDto, id);
-    }
 }

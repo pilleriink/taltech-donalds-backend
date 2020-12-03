@@ -2,6 +2,7 @@ package ee.taltech.backend.controller;
 
 import ee.taltech.backend.exception.InvalidCommentException;
 import ee.taltech.backend.exception.InvalidProductException;
+import ee.taltech.backend.exception.MealNotFoundException;
 import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.category.CategoryMinifiedDto;
 import ee.taltech.backend.model.comment.Comment;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 
 @RequestMapping("products")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ProductController {
 
     @Autowired
@@ -44,6 +46,12 @@ public class ProductController {
     @PostMapping
     public ProductDto save(@RequestBody ProductDto productDto){
         return productService.save(productDto);
+    }
+
+    @Secured(Roles.ADMIN)
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Long id) throws ProductNotFoundException {
+        productService.delete(id);
     }
 
     @PostMapping("/{productId}/comments")
