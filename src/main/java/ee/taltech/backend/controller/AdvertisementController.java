@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("ads")
+@RequestMapping({"ads", "ads2"})
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AdvertisementController {

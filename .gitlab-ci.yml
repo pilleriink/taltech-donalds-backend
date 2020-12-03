@@ -18,6 +18,8 @@ build donald:
   tags:
     - donald
   script:
+    - sed -i s/REPLACEPASSWORDHERE/$POSTGRES_PASSWORD/ src/main/resources/application.yaml
+    - sed -i s/REPLACEUSERNAMEHERE/$POSTGRES_USERNAME/ src/main/resources/application.yaml
     - ./gradlew assemble
 
 test donald:
@@ -25,6 +27,8 @@ test donald:
   tags:
     - donald
   script:
+    - sed -i s/REPLACEPASSWORDHERE/$POSTGRES_PASSWORD/ src/main/resources/application.yaml
+    - sed -i s/REPLACEUSERNAMEHERE/$POSTGRES_USERNAME/ src/main/resources/application.yaml
     - ./gradlew check
 
 deploy donald:
@@ -32,12 +36,24 @@ deploy donald:
   only:
     refs:
       - master
-      - feature/ci-cd
   tags:
     - donald
   script:
-    - mkdir -p ~/api-deployment # mkdir make folder api-deployment ~/ is under current user directory so for gitlab it would be /home/gitlab/api-deployment
-    - rm -rf ~/api-deployment/* # rm remove -rf is recursive files from api-deployment
-    - cp -r build/libs/. ~/api-deployment # cp - copy build/libs is where
+    - mkdir -p ~/api-deployment
+    - rm -rf ~/api-deployment/*
+    - cp -r build/libs/. ~/api-deployment
+    - sudo systemctl restart donald
+
+deploy dev-donald:
+  stage: deploy
+  only:
+    refs:
+      - feature/*
+  tags:
+    - donald
+  script:
+    - mkdir -p ~/dev-api-deployment
+    - rm -rf ~/dev-api-deployment/*
+    - cp -r build/libs/. ~/dev-api-deployment
     - sudo systemctl restart donald
 
