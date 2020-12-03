@@ -80,9 +80,6 @@ class ControllerTest {
         assertTrue(locationController.getLocations().size() > 0);
     }
 
-    @Test void categoryControllerFindAll() {
-        assertEquals(categoryController.findAll().get(0).getClass(), CategoryMinifiedDto.class);
-    }
 
     @Test
     void orderProductControllerThrowsExceptionWhenProductIsEmpty() {
