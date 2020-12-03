@@ -26,6 +26,7 @@ public class CategoryController {
         return categoryService.findAll().stream().map(CategoryMinifiedDto::new).collect(Collectors.toList());
     }
 
+
     @GetMapping("/{id}")
     public CategoryDto getCategoryById(@PathVariable Long id) throws CategoryNotFoundException {
         return new CategoryDto(categoryService.findById(id));
