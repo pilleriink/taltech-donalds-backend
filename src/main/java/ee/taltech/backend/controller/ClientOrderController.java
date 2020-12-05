@@ -21,7 +21,6 @@ public class ClientOrderController {
     @PostMapping
     public ClientOrder save(@RequestBody ClientOrder clientOrder) throws InvalidOrderException {
         ClientOrder clientOrder1 = clientOrderService.save(clientOrder);
-        emailService.sendSimpleMessage(clientOrder1);
         return clientOrder1;
     }
 }
