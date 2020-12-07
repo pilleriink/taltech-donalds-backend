@@ -20,12 +20,14 @@ public class UserApplicationInit implements CommandLineRunner {
     public void run(String... args) throws Exception {
         User user = new User();
         user.setUsername("user");
+        user.setEmail("pilleriin.koiva@gmail.com");
         user.setPassword(passwordEncoder.encode("user"));
         user.setDbRole(DbRole.USER);
         usersRepository.save(user);
 
         User admin = new User();
         admin.setUsername("admin");
+        admin.setEmail("pilleriin.koiva@gmail.com");
         admin.setPassword(passwordEncoder.encode("admin"));
         admin.setDbRole(DbRole.ADMIN);
         usersRepository.save(admin);

@@ -15,9 +15,6 @@ public class ClientOrderController {
     @Autowired
     private ClientOrderService clientOrderService;
 
-    @Autowired
-    private EmailServiceImpl emailService;
-
     @PostMapping
     public ClientOrder save(@RequestBody ClientOrder clientOrder) throws InvalidOrderException {
         ClientOrder clientOrder1 = clientOrderService.save(clientOrder);
