@@ -147,7 +147,7 @@ public class ServiceTest {
                 " \n" +
                 "Order price:10€\n" +
                 "Pick-up location: Ehitajate tee 5, 19086 Tallinn Estonia";
-        assertEquals(emailService.constructEmail(clientOrder).toString(), text);
+        assertEquals(emailService.constructEmailOrder(clientOrder).toString(), text);
     }
 
     @Test
@@ -173,7 +173,7 @@ public class ServiceTest {
 
         clientOrder.setLocation(location);
         clientOrder.setEmail("a@gmail.com");
-        SimpleMailMessage simpleMailMessage = emailService.constructSimpleMailMessage(clientOrder);
+        SimpleMailMessage simpleMailMessage = emailService.constructSimpleMailMessageOrder(clientOrder);
         assertSame(Objects.requireNonNull(simpleMailMessage.getTo())[0], clientOrder.getEmail());
         assertSame(Objects.requireNonNull(simpleMailMessage.getFrom()), "taltechdonalds@gmail.com");
         assertSame(Objects.requireNonNull(simpleMailMessage.getSubject()), "TalTech Donald's Order Confirmation");
