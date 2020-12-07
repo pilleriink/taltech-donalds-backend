@@ -1,12 +1,10 @@
 package ee.taltech.backend.controller;
 
-import ee.taltech.backend.exception.MyBadRequestException;
+import ee.taltech.backend.exception.UserNotFoundException;
 import ee.taltech.backend.model.user.LoginDto;
 import ee.taltech.backend.model.user.LoginResponse;
 import ee.taltech.backend.model.user.RegisterDto;
-import ee.taltech.backend.model.user.UserDto;
-import ee.taltech.backend.security.JwtTokenProvider;
-import ee.taltech.backend.security.MyUserDetailsService;
+import ee.taltech.backend.model.user.User;
 import ee.taltech.backend.security.Roles;
 import ee.taltech.backend.security.UserSessionHolder;
 import ee.taltech.backend.service.users.LoginService;
@@ -15,7 +13,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("users")
@@ -25,6 +22,11 @@ public class UserController {
 
     private final UserService userService;
     private final LoginService loginService;
+
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Long id) throws UserNotFoundException {
+        return userService.findById(id);
+    }
 
     @PostMapping("register")
     public ResponseEntity<Void> register(@RequestBody RegisterDto registerDto){
