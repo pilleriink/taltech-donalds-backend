@@ -1,8 +1,10 @@
 package ee.taltech.backend.service;
 
 import ee.taltech.backend.model.order.ClientOrder;
+import ee.taltech.backend.model.order.Coupon;
 import ee.taltech.backend.model.order.OrderMeal;
 import ee.taltech.backend.model.order.OrderProduct;
+import ee.taltech.backend.model.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -17,20 +19,34 @@ public class EmailServiceImpl {
     private JavaMailSender emailSender;
     private static DecimalFormat df2 = new DecimalFormat("#.##");
 
-    public void sendSimpleMessage(ClientOrder clientOrder) {
-        emailSender.send(constructSimpleMailMessage(clientOrder));
+    public void sendSimpleMessageCoupon(Coupon coupon, User user) {
+        System.out.println(user);
+        emailSender.send(constructSimpleMailMessageCoupon(coupon, user));
     }
 
-    public SimpleMailMessage constructSimpleMailMessage(ClientOrder clientOrder) {
+    public SimpleMailMessage constructSimpleMailMessageCoupon(Coupon coupon, User user) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("taltechdonalds@gmail.com");
+        message.setTo(user.getEmail());
+        message.setSubject("New Coupon");
+        message.setText("Use coupon " + coupon.getName() + " at checkout to get " + coupon.getDiscount() + "% off!");
+        return message;
+    }
+
+    public void sendSimpleMessageOrder(ClientOrder clientOrder) {
+        emailSender.send(constructSimpleMailMessageOrder(clientOrder));
+    }
+
+    public SimpleMailMessage constructSimpleMailMessageOrder(ClientOrder clientOrder) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("taltechdonalds@gmail.com");
         message.setTo(clientOrder.getEmail());
         message.setSubject("TalTech Donald's Order Confirmation");
-        message.setText(constructEmail(clientOrder).toString());
+        message.setText(constructEmailOrder(clientOrder).toString());
         return message;
     }
 
-    public StringBuilder constructEmail(ClientOrder clientOrder) {
+    public StringBuilder constructEmailOrder(ClientOrder clientOrder) {
         StringBuilder text = new StringBuilder("Thank you for you order!\n \nOrder:\n \n");
         for (OrderProduct orderProduct : clientOrder.getOrderProducts()) {
             text.append(orderProduct.getName()).append(", price:").append(df2.format(orderProduct.getPrice())).append("€\n");

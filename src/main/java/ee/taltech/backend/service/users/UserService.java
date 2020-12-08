@@ -14,6 +14,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static org.apache.commons.lang3.StringUtils.isBlank;
 
 @Service
@@ -32,6 +34,7 @@ public class UserService {
         }
         User user = new User();
         user.setUsername(registerDto.getUsername());
+        user.setEmail(registerDto.getEmail());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
         user.setDbRole(DbRole.USER);
         userRepository.save(user);
@@ -40,6 +43,10 @@ public class UserService {
 
     public User findById(Long id) throws UserException{
         return userRepository.findById(id).orElseThrow(UserException::new);
+    }
+
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     public User getCurrentUser() {
