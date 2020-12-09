@@ -16,7 +16,9 @@ public class ClientOrderService {
 
     @Autowired
     private ClientOrderRepository clientOrderRepository;
+    @Autowired
     private UserService userService;
+    @Autowired
     private EmailServiceImpl emailService;
 
     public ClientOrder save(ClientOrder clientOrder) throws InvalidOrderException {
