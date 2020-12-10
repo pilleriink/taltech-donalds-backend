@@ -26,11 +26,14 @@ spring:
     username: runner
     password: password
     platform: POSTGRES
+  profiles:
+    active: default
+
 logging:
   file:
     path: ./logs
-app:
-  jwt:
-    secret: bRUG198EfyW3g7GF8yTufhKUjUbejrRKoJi3lqzZ2V3pYAzWowSTtBc7MOHix6R
-    durationMin: 120
+jwt:
+  secret: bRUG198EfyW3g7GF8yTufhKUjUbejrRKoJi3lqzZ2V3pYAzWowSTtBc7MOHix6R
+  durationMin: 120
+
 

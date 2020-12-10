@@ -18,8 +18,8 @@ build donald:
   tags:
     - donald
   script:
-    - sed -i s/REPLACEPASSWORDHERE/$POSTGRES_PASSWORD/ src/main/resources/application.yaml
-    - sed -i s/REPLACEUSERNAMEHERE/$POSTGRES_USERNAME/ src/main/resources/application.yaml
+    - sed -i s/REPLACEPASSWORDHERE/$POSTGRES_PASSWORD/ src/main/resources/application-prod.yaml
+    - sed -i s/REPLACEUSERNAMEHERE/$POSTGRES_USERNAME/ src/main/resources/application-prod.yaml
     - ./gradlew assemble
 
 test donald:
@@ -27,8 +27,8 @@ test donald:
   tags:
     - donald
   script:
-    - sed -i s/REPLACEPASSWORDHERE/$POSTGRES_PASSWORD/ src/main/resources/application.yaml
-    - sed -i s/REPLACEUSERNAMEHERE/$POSTGRES_USERNAME/ src/main/resources/application.yaml
+    - sed -i s/REPLACEPASSWORDHERE/$POSTGRES_PASSWORD/ src/main/resources/application-prod.yaml
+    - sed -i s/REPLACEUSERNAMEHERE/$POSTGRES_USERNAME/ src/main/resources/application-prod.yaml
     - ./gradlew check
 
 deploy donald:

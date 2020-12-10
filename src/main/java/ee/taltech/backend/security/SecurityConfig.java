@@ -68,16 +68,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/users/register").permitAll() //so guest can register
                 .antMatchers("/users/login").permitAll() //so guest can login
-                .antMatchers("/categories").permitAll()
-                .antMatchers("/categories/**").permitAll()
-                .antMatchers("/products").permitAll()
-                .antMatchers("/products/**").permitAll()
-                .antMatchers("/meals").permitAll()
-                .antMatchers("/meals/**").permitAll()
-                .antMatchers("/locations").permitAll()
-                .antMatchers("/ads").permitAll()
-                .antMatchers("/comments").permitAll()
-                .antMatchers("/coupons").permitAll()
+                .antMatchers(HttpMethod.GET, "/categories/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/products/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/meals/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/locations").permitAll()
+                .antMatchers(HttpMethod.GET, "/ads").permitAll()
+                .antMatchers(HttpMethod.GET, "/comments").permitAll()
+                .antMatchers(HttpMethod.GET, "/coupons").permitAll()
                 .antMatchers(SWAGGER_PERMIT_LIST)
                 .permitAll()
                 .anyRequest().authenticated();
