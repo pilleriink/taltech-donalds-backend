@@ -1,7 +1,7 @@
 package ee.taltech.backend.model.order;
 
 import ee.taltech.backend.model.location.Location;
-import ee.taltech.backend.model.product.Product;
+import ee.taltech.backend.model.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,8 +22,10 @@ public class ClientOrder {
     private String email;
     private Double price;
     @ManyToOne
+    private User user;
+    @ManyToOne
     private Location location;
-    @OneToMany(mappedBy = "clientOrder", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "clientOrder")
     private List<OrderProduct> orderProducts = new ArrayList<>();
     @OneToMany(mappedBy = "clientOrder", cascade = CascadeType.ALL)
     private List<OrderMeal> orderMeals = new ArrayList<>();

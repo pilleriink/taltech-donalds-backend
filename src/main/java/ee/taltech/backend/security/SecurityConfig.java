@@ -33,6 +33,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource
     private JwtRequestFilter jwtRequestFilter;
 
+    private static final String[] SWAGGER_PERMIT_LIST = {
+            "/v2/api-docs",
+            "/configuration/**",
+            "/swagger*/**",
+            "/webjars/**",
+            "/swagger-ui.html",
+            "/webjars/**"
+    };
+
     /**
      * authentication configuration
      */
@@ -69,6 +78,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/ads").permitAll()
                 .antMatchers("/comments").permitAll()
                 .antMatchers("/coupons").permitAll()
+                .antMatchers(SWAGGER_PERMIT_LIST)
+                .permitAll()
                 .anyRequest().authenticated();
 
     }

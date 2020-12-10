@@ -33,6 +33,7 @@ public class LoginService {
         MyUser myUser = (MyUser) authenticate.getPrincipal(); //it is UserDetails and in our case it is MyUser
         String token = jwtTokenProvider.generateToken(myUser);
         return LoginResponse.builder()
+                .id(myUser.getId())
                 .username(myUser.getUsername())
                 .token(token)
                 .role(myUser.getDbRole())

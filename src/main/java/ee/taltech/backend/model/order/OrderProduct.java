@@ -3,16 +3,13 @@ package ee.taltech.backend.model.order;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.criterion.Order;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 public class OrderProduct {
 
     @Id
@@ -21,8 +18,13 @@ public class OrderProduct {
     private String name;
     private Double price;
     private String removedIngredients;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "client_order_id", nullable = false)
     private ClientOrder clientOrder;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private OrderMeal meal;
+    public OrderProduct(String name, Double price, String removedIngredients, ClientOrder clientOrder) {
+        this.name = name;
+        this.price = price;
+        this.removedIngredients = removedIngredients;
+        this.clientOrder = clientOrder;
+    }
 }
