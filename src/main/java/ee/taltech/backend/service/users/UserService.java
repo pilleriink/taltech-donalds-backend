@@ -55,6 +55,5 @@ public class UserService {
         return findById(myUser.getId());
     }
 
-
 }
 

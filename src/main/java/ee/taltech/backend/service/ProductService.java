@@ -1,5 +1,6 @@
 package ee.taltech.backend.service;
 
+import ee.taltech.backend.exception.CategoryNotFoundException;
 import ee.taltech.backend.exception.MealNotFoundException;
 import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.category.Category;
@@ -22,7 +23,7 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
     @Autowired
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
     @Autowired
     private MealRepository mealRepository;
 
@@ -35,7 +36,7 @@ public class ProductService {
                 .orElseThrow(ProductNotFoundException::new);
     }
 
-    public ProductDto save(ProductDto productDto) {
+    public ProductDto save(ProductDto productDto) throws CategoryNotFoundException {
         Product product = new Product();
         product.setName(productDto.getName());
         product.setMeals(new ArrayList<>());
@@ -44,8 +45,7 @@ public class ProductService {
         product.setPrice(productDto.getPrice());
         product.setImage(productDto.getImage());
         product.setDescription(productDto.getDescription());
-        System.out.println(productDto.getCategory());
-        Category category = categoryRepository.findByName(productDto.getCategory().getName());
+        Category category = categoryService.findById(productDto.getCategory().getId());
         product.setCategory(category);
         product.setComments(new ArrayList<>());
         Product save = productRepository.save(product);

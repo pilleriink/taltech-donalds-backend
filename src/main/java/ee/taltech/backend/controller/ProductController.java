@@ -1,9 +1,6 @@
 package ee.taltech.backend.controller;
 
-import ee.taltech.backend.exception.InvalidCommentException;
-import ee.taltech.backend.exception.InvalidProductException;
-import ee.taltech.backend.exception.MealNotFoundException;
-import ee.taltech.backend.exception.ProductNotFoundException;
+import ee.taltech.backend.exception.*;
 import ee.taltech.backend.model.category.CategoryMinifiedDto;
 import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.comment.CommentDto;
@@ -44,7 +41,7 @@ public class ProductController {
 
     @Secured(Roles.ADMIN)
     @PostMapping
-    public ProductDto save(@RequestBody ProductDto productDto){
+    public ProductDto save(@RequestBody ProductDto productDto) throws CategoryNotFoundException {
         return productService.save(productDto);
     }
 
