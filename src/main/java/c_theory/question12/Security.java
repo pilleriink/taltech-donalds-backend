@@ -4,11 +4,11 @@ public class Security {
 
     //todo A
     // What is authentication?
-    // Answer:
+    // Answer: Verifying the identity of a user
 
     //todo B
     // What is authorization?
-    // Answer:
+    // Answer: giving official permission
 
     //todo C
     // For web (HTTP backend) Spring Security is configured as a ... ? Explain it.
