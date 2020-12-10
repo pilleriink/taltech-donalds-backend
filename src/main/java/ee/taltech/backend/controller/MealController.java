@@ -1,12 +1,7 @@
 package ee.taltech.backend.controller;
 
-import ee.taltech.backend.exception.CategoryNotFoundException;
 import ee.taltech.backend.exception.MealNotFoundException;
-import ee.taltech.backend.model.category.CategoryDto;
-import ee.taltech.backend.model.category.CategoryMinifiedDto;
-import ee.taltech.backend.model.meal.Meal;
 import ee.taltech.backend.model.meal.MealDto;
-import ee.taltech.backend.model.meal.MealMinifiedDto;
 import ee.taltech.backend.security.Roles;
 import ee.taltech.backend.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,5 @@
 package ee.taltech.backend.service;
 
-import ee.taltech.backend.model.advertisement.Advertisement;
 import ee.taltech.backend.model.location.Location;
 import ee.taltech.backend.repository.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;

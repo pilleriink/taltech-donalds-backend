@@ -1,9 +1,7 @@
 package ee.taltech.backend.service.order;
 
 import ee.taltech.backend.exception.InvalidOrderProductException;
-import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.model.order.OrderProduct;
-import ee.taltech.backend.model.product.Product;
 import ee.taltech.backend.repository.OrderProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

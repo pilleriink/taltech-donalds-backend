@@ -3,6 +3,7 @@ package ee.taltech.backend.controller;
 import ee.taltech.backend.exception.InvalidOrderException;
 import ee.taltech.backend.exception.InvalidOrderProductException;
 import ee.taltech.backend.model.order.ClientOrder;
+import ee.taltech.backend.model.order.ClientOrderDto;
 import ee.taltech.backend.model.order.OrderProduct;
 import ee.taltech.backend.service.order.ClientOrderService;
 import ee.taltech.backend.service.order.OrderProductService;
@@ -20,6 +21,11 @@ public class ClientOrderController {
     private ClientOrderService clientOrderService;
     @Autowired
     private OrderProductService orderProductService;
+
+    @GetMapping("/user/{id}")
+    public List<ClientOrderDto> findByUser(@PathVariable Long id) {
+        return clientOrderService.findByUser(id);
+    }
 
     @PostMapping
     public ClientOrder save(@RequestBody ClientOrder clientOrderData) throws InvalidOrderException, InvalidOrderProductException {

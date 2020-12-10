@@ -1,12 +1,8 @@
 package ee.taltech.backend.controller;
 
-import ee.taltech.backend.exception.CategoryNotFoundException;
-import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.advertisement.Advertisement;
-import ee.taltech.backend.model.category.CategoryDto;
 import ee.taltech.backend.security.Roles;
 import ee.taltech.backend.service.AdvertisementService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +33,4 @@ public class AdvertisementController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
-
 }

@@ -1,11 +1,12 @@
 package ee.taltech.backend.model.product;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.category.Category;
-
+import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.meal.Meal;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;

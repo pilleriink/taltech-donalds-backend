@@ -10,7 +10,6 @@ import ee.taltech.backend.model.product.ProductDto;
 import ee.taltech.backend.repository.CategoryRepository;
 import ee.taltech.backend.repository.MealRepository;
 import ee.taltech.backend.repository.ProductRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

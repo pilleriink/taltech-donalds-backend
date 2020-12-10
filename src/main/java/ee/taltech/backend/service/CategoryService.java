@@ -1,15 +1,11 @@
 package ee.taltech.backend.service;
 
 import ee.taltech.backend.exception.CategoryNotFoundException;
-import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.exception.ProductNotFoundException;
 import ee.taltech.backend.model.category.Category;
 import ee.taltech.backend.model.category.CategoryDto;
-import ee.taltech.backend.model.meal.Meal;
 import ee.taltech.backend.model.product.Product;
-import ee.taltech.backend.model.product.ProductDto;
 import ee.taltech.backend.repository.CategoryRepository;
-import ee.taltech.backend.repository.MealRepository;
 import ee.taltech.backend.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

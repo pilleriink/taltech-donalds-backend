@@ -1,8 +1,9 @@
 package ee.taltech.backend.model.comment;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import ee.taltech.backend.model.product.Product;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
