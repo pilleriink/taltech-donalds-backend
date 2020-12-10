@@ -1,5 +1,16 @@
 package c_theory.question14.blogs;
 
+import a_theory.question6.chocolate.Cake;
+import ee.taltech.backend.exception.CategoryNotFoundException;
+import ee.taltech.backend.model.category.CategoryDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RequestMapping("blogs")
+@RestController
 public class BlogsController {
 
     //todo for question 14 there are 4 assignments in total
@@ -16,16 +27,34 @@ public class BlogsController {
     // Modifying other classes is unnecessary and will not be graded.
 
     //todo A add necessary annotations on the class
+    @Autowired
+    BlogsService blogsService;
 
     //todo B create a method to query blogs (plural)
+    @GetMapping
+    List<Blog> getBlogs() {
+        return blogsService.getBlogs();}
 
     //todo C create a method to query single blog
+    @GetMapping("/{id}")
+    public Blog getBlogById(@PathVariable Long id) {
+        return blogsService.getBlogById(id);
+    }
 
     //todo D create a method to save a new blog
+    @PostMapping
+    public Blog addBlog(@RequestBody Blog blog) {
+        return blogsService.addBlog(blog);
+    }
 
     //todo E create a method to update a bog
 
+
     //todo F create a method to delete a blog
+    @DeleteMapping("{id}")
+    public void deleteBlog(@PathVariable Long id) {
+        blogsService.deleteBlog();
+    }
 
     //todo G assuming each blog has only 1 author (one-to-one relation) create a method to query blog's author
 
