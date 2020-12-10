@@ -26,9 +26,6 @@ spring:
     username: runner
     password: password
     platform: POSTGRES
-  profiles:
-    active: default
-
 logging:
   file:
     path: ./logs
