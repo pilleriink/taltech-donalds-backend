@@ -23,14 +23,13 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/programm
     driverClassName: org.postgresql.Driver
-    username: runner
+    username: postgres
     password: password
     platform: POSTGRES
 logging:
   file:
     path: ./logs
-app:
-  jwt:
-    secret: bRUG198EfyW3g7GF8yTufhKUjUbejrRKoJi3lqzZ2V3pYAzWowSTtBc7MOHix6R
-    durationMin: 120
+jwt:
+  secret: bRUG198EfyW3g7GF8yTufhKUjUbejrRKoJi3lqzZ2V3pYAzWowSTtBc7MOHix6R
+  durationMin: 120
 
