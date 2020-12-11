@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.String.format;
-import static org.apache.commons.collections4.CollectionUtils.isEmpty;
 
 /**
  * to load user with username, password and roles (authorities)

@@ -1,16 +1,12 @@
 package ee.taltech.backend.model.product;
 
-import ee.taltech.backend.model.category.Category;
 import ee.taltech.backend.model.category.CategoryMinifiedDto;
-import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.comment.CommentDto;
 import ee.taltech.backend.model.meal.MealMinifiedDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 

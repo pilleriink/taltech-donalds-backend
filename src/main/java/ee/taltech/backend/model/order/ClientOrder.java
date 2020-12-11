@@ -29,5 +29,4 @@ public class ClientOrder {
     private List<OrderProduct> orderProducts = new ArrayList<>();
     @OneToMany(mappedBy = "clientOrder", cascade = CascadeType.ALL)
     private List<OrderMeal> orderMeals = new ArrayList<>();
-
 }

@@ -1,22 +1,13 @@
 package ee.taltech.backend.service.order;
 
-import ee.taltech.backend.exception.CategoryNotFoundException;
-import ee.taltech.backend.exception.ProductNotFoundException;
-import ee.taltech.backend.model.category.Category;
-import ee.taltech.backend.model.category.CategoryDto;
 import ee.taltech.backend.model.order.Coupon;
-import ee.taltech.backend.model.product.Product;
 import ee.taltech.backend.model.user.User;
-import ee.taltech.backend.repository.CategoryRepository;
 import ee.taltech.backend.repository.CouponRepository;
-import ee.taltech.backend.repository.ProductRepository;
 import ee.taltech.backend.service.EmailServiceImpl;
-import ee.taltech.backend.service.ProductService;
 import ee.taltech.backend.service.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

@@ -1,8 +1,5 @@
 package ee.taltech.backend.model.meal;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import ee.taltech.backend.model.category.Category;
-import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.product.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

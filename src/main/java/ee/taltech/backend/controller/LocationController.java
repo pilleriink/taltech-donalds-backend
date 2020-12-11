@@ -1,15 +1,12 @@
 package ee.taltech.backend.controller;
 
-import ee.taltech.backend.exception.MealNotFoundException;
 import ee.taltech.backend.model.location.Location;
-import ee.taltech.backend.model.meal.MealDto;
 import ee.taltech.backend.security.Roles;
 import ee.taltech.backend.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("locations")

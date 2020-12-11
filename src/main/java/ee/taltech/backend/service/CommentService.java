@@ -1,8 +1,6 @@
 package ee.taltech.backend.service;
 
-import ee.taltech.backend.exception.CommentNotFoundException;
 import ee.taltech.backend.exception.InvalidCommentException;
-import ee.taltech.backend.exception.InvalidProductException;
 import ee.taltech.backend.model.comment.Comment;
 import ee.taltech.backend.model.comment.CommentRequest;
 import ee.taltech.backend.model.product.Product;

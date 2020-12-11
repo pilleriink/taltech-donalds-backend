@@ -1,9 +1,6 @@
 package ee.taltech.backend.service;
 
-import ee.taltech.backend.exception.CategoryNotFoundException;
 import ee.taltech.backend.exception.MealNotFoundException;
-import ee.taltech.backend.model.category.Category;
-import ee.taltech.backend.model.category.CategoryDto;
 import ee.taltech.backend.model.meal.Meal;
 import ee.taltech.backend.model.meal.MealDto;
 import ee.taltech.backend.model.product.Product;
@@ -15,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class MealService {

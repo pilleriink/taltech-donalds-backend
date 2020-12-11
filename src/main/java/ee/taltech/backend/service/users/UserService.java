@@ -1,8 +1,6 @@
 package ee.taltech.backend.service.users;
 
-import ee.taltech.backend.exception.CategoryNotFoundException;
 import ee.taltech.backend.exception.UserException;
-import ee.taltech.backend.model.category.Category;
 import ee.taltech.backend.model.user.RegisterDto;
 import ee.taltech.backend.model.user.User;
 import ee.taltech.backend.repository.UserRepository;

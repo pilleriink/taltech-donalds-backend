@@ -1,12 +1,8 @@
 package ee.taltech.backend.service.order;
 
 import ee.taltech.backend.exception.InvalidOrderMealException;
-import ee.taltech.backend.exception.InvalidOrderProductException;
 import ee.taltech.backend.model.order.OrderMeal;
-import ee.taltech.backend.model.order.OrderProduct;
 import ee.taltech.backend.repository.OrderMealRepository;
-import ee.taltech.backend.repository.OrderProductRepository;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
