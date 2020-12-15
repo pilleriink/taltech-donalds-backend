@@ -13,7 +13,3 @@ services:
     image: songmeo/taltech-donald:latest
     ports:
       - 8080:8080
-  variables:
-    DOCKER_HOST: tcp://docker:2375/
-    DOCKER_DRIVER: overlay2
-    DOCKER_TLS_CERTDIR: ""
