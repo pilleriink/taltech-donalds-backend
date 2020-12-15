@@ -36,7 +36,6 @@ publish docker image:
   before_script:
     - mkdir -p ~/.docker
     - echo $DOCKER_AUTH > ~/.docker/config.json
-    - docker info
     - docker login
   script:
     - docker build -t taltech-donald .
@@ -50,6 +49,7 @@ deploy donald:
   only:
     - tags
   before_script:
+    - sudo apt install -y docker-compose
     - mkdir -p ~/.docker
     - echo $DOCKER_AUTH > ~/.docker/config.json
   except:
