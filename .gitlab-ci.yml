@@ -5,6 +5,7 @@ stages:
   - deploy
 
 build donald:
+  image: gradle:6.7.0-jdk11
   stage: build
   cache:
     paths:
