@@ -19,6 +19,7 @@ build donald:
     - build
 
 test donald:
+  image: gradle:6.7.0-jdk11
   stage: test
   script:
     - ./gradlew check
