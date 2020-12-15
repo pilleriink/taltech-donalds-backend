@@ -1,5 +1,12 @@
 package c_theory.question14.lessons;
 
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Collections;
+import java.util.List;
+
+@RestController
+@RequestMapping("/lessons")
 public class LessonsController {
 
     //todo for question 14 there are 4 assignments in total
@@ -17,26 +24,60 @@ public class LessonsController {
 
     //todo A add necessary annotations on the class
 
-    //todo B create a method to query lessons (plural)
+    //B create a method to query lessons (plural)
+    Long DEFAULT_YEAR = 2020L;
 
-    //todo C create a method to query single lesson
+    @GetMapping(value = {"", "/course/{courseId}", "/year", "/year/{year}", "/most-visited", "least-visited"})
+    public List<Lesson> findAll(@PathVariable("courseId") Long courseId, @PathVariable("year") Long year) {
+        if (year == null) {
+            year = DEFAULT_YEAR;
+        }
+        return Collections.singletonList(new Lesson());
+    }
 
-    //todo D create a method to save a lesson
+    //C create a method to query single lesson
+    @GetMapping("/{id}")
+    public Lesson findById(@PathVariable("id") Long id) {
+        return new Lesson();
+    }
 
-    //todo E create a method to update a lesson
+    //D create a method to save a lesson
+    @PostMapping
+    public Lesson create(@RequestBody Lesson lesson) {
+        return lesson;
+    }
 
-    //todo F create a method to delete a lesson
+    //E create a method to update a lesson
+    @PutMapping("/{id}")
+    public void update(@PathVariable("id") Long id, @RequestBody Lesson lesson) {
+        ;
+    }
 
-    //todo G assuming each Lesson has students (one-to-many relation) create a method to query lesson's students
+    //F create a method to delete a lesson
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") Long id) {
+        ;
+    }
 
-    //todo H create a method to update lesson's name (and nothing else)
+    //G assuming each Lesson has students (one-to-many relation) create a method to query lesson's students
+    @GetMapping("/{id}/students")
+    public List<Student> findStudentsById(@PathVariable("id") Long id) {
+        return Collections.singletonList(new Student());
+    }
 
-    //todo G modify correct method to support searching lessons by course id while keeping original functionality
+    //H create a method to update lesson's name (and nothing else)
+    @PatchMapping("/{id}")
+    public void partialUpdateName(@PathVariable("id") Long id, String newName) {
+        ;
+    }
 
-    //todo H modify correct method to support searching by year with default being current year (2020)
+    //G modify correct method to support searching lessons by course id while keeping original functionality
+
+    //H modify correct method to support searching by year with default being current year (2020)
     // (you can ignore semesters or use year-semester string)
 
-    //todo K modify correct method to order lessons
+
+    //K modify correct method to order lessons
     // * by most visitors first
     // * by least visitors first
     // (you can assume that by default it searches by predefined lecturer's order)

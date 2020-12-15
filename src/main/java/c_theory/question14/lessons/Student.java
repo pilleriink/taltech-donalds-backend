@@ -1,5 +1,5 @@
 package c_theory.question14.lessons;
 
-public class Students {
+public class Student {
     private String name;
 }

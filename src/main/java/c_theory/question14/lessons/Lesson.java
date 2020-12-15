@@ -11,5 +11,5 @@ public class Lesson {
     private String description;
     private List<String> materials;
     //    ... many more
-    private List<Students> students;
+    private List<Student> students;
 }
