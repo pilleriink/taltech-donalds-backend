@@ -29,8 +29,6 @@ test donald:
 publish docker image:
   image: docker:19.03
   stage: publish
-  only:
-    - tags
   except:
     - branches
   before_script:
@@ -46,8 +44,6 @@ publish docker image:
 
 deploy donald:
   stage: deploy
-  only:
-    - tags
   before_script:
     - mkdir -p ~/.docker
     - echo $DOCKER_AUTH > ~/.docker/config.json
