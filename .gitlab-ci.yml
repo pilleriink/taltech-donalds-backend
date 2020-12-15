@@ -36,6 +36,7 @@ publish docker image:
   before_script:
     - mkdir -p ~/.docker
     - echo $DOCKER_AUTH > ~/.docker/config.json
+    - docker info
     - docker login
   script:
     - docker build -t taltech-donald .
