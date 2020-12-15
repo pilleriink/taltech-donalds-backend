@@ -1,6 +1,7 @@
 stages:
   - build
   - test
+  - publish
   - deploy
 
 before_script:
@@ -15,41 +16,49 @@ build donald:
   artifacts:
     paths:
       - build/libs
-  tags:
-    - donald
   script:
     - ./gradlew assemble
+  tags:
+    - build
 
 test donald:
   stage: test
-  tags:
-    - donald
   script:
     - ./gradlew check
+  tags:
+    - build
+
+publish docker image:
+  image: docker:19.03
+  stage: publish
+  only:
+    - tags
+  except:
+    - branches
+  before_script:
+    - mkdir -p ~/.docker
+    - echo $DOCKER_AUTH > ~/.docker/config.json
+    - docker login
+  script:
+    - docker build -t taltech-donald .
+    - docker tag taltech-donald songmeo/taltech-donald
+    - docker push songmeo/taltech-donald
+  tags:
+    - build
 
 deploy donald:
   stage: deploy
   only:
-    refs:
-      - master
-  tags:
-    - donald
+    - tags
+  before_script:
+    - mkdir -p ~/.docker
+    - echo $DOCKER_AUTH > ~/.docker/config.json
+  except:
+    - branches
   script:
-    - mkdir -p ~/api-deployment
-    - rm -rf ~/api-deployment/*
-    - cp -r build/libs/. ~/api-deployment
-    - sudo systemctl restart donald
-
-deploy dev-donald:
-  stage: deploy
-  only:
-    refs:
-      - feature/*
+    - docker-compose down
+    - docker-compose pull
+    - docker-compose up -d
   tags:
-    - donald
-  script:
-    - mkdir -p ~/dev-api-deployment
-    - rm -rf ~/dev-api-deployment/*
-    - cp -r build/libs/. ~/dev-api-deployment
-    - sudo systemctl restart donald
+    - prod
 
