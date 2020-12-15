@@ -47,3 +47,6 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+bootJar{
+	archiveFileName = 'taltech-donald.jar'
+}
