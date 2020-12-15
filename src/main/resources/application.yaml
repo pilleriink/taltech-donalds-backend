@@ -21,7 +21,7 @@ spring:
     hibernate:
       ddl-auto: create
   datasource:
-    url: jdbc:postgresql://localhost:5432/programm
+    url: jdbc:postgresql://database:5432/programm
     driverClassName: org.postgresql.Driver
     username: postgres
     password: password
