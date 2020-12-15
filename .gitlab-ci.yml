@@ -29,8 +29,6 @@ test donald:
 publish docker image:
   image: docker:19.03
   stage: publish
-  except:
-    - branches
   before_script:
     - mkdir -p ~/.docker
     - echo $DOCKER_AUTH > ~/.docker/config.json
@@ -47,8 +45,6 @@ deploy donald:
   before_script:
     - mkdir -p ~/.docker
     - echo $DOCKER_AUTH > ~/.docker/config.json
-  except:
-    - branches
   script:
     - docker-compose down
     - docker-compose pull
