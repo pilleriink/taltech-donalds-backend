@@ -4,15 +4,12 @@ stages:
   - publish
   - deploy
 
-before_script:
-  - export GRADLE_USER_HOME=`pwd`/.gradle
-
 build donald:
+  image: gradle:6.7.0-jdk11
   stage: build
   cache:
     paths:
-      - .gradle/wrapper
-      - .gradle/caches
+      - .gradle
   artifacts:
     paths:
       - build/libs
@@ -22,6 +19,7 @@ build donald:
     - build
 
 test donald:
+  image: gradle:6.7.0-jdk11
   stage: test
   script:
     - ./gradlew check
@@ -38,6 +36,7 @@ publish docker image:
   before_script:
     - mkdir -p ~/.docker
     - echo $DOCKER_AUTH > ~/.docker/config.json
+    - docker info
     - docker login
   script:
     - docker build -t taltech-donald .
