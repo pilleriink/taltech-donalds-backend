@@ -1,0 +1,2 @@
+[submodule "docker"]
+	url = https://gitlab.cs.ttu.ee/sopham/iti0203-2020-team31-submodule.git
