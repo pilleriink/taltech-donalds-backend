@@ -5,7 +5,6 @@ RUN set -eux; \
 
 WORKDIR /opt/taltech-donald/
 
-CD backend/
 COPY build/libs/taltech-donald.jar .
 COPY docker-entrypoint.sh .
 RUN chmod +x docker-entrypoint.sh
