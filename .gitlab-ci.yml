@@ -1,0 +1,55 @@
+stages:
+  - build
+  - test
+  - publish
+  - deploy
+
+build:
+  stage: build
+  image: gradle:6.7.0-jdk11
+  stage: build
+  cache:
+    paths:
+      - .gradle
+  artifacts:
+    paths:
+      - build/libs
+  script:
+    - ./gradlew assemble
+  tags:
+    - build
+
+test:
+  image: gradle:6.7.0-jdk11
+  stage: test
+  script:
+    - ./gradlew check
+  tags:
+    - build
+
+publish:
+  image: docker:19.03
+  stage: publish
+  before_script:
+    - mkdir -p ~/.docker
+    - echo $DOCKER_AUTH > ~/.docker/config.json
+    - docker login
+  script:
+    - docker build -t taltech-donald .
+    - docker tag taltech-donald songmeo/taltech-donald
+    - docker push songmeo/taltech-donald
+  tags:
+    - build
+
+backend:deploy:
+  stage: deploy
+  before_script:
+    - mkdir -p ~/.docker
+    - echo $DOCKER_AUTH > ~/.docker/config.json
+  script:
+    - cd backend/
+    - docker-compose down
+    - docker-compose pull
+    - docker-compose up -d
+  tags:
+    - prod
