@@ -47,7 +47,6 @@ backend:deploy:
     - mkdir -p ~/.docker
     - echo $DOCKER_AUTH > ~/.docker/config.json
   script:
-    - cd backend/
     - docker-compose down
     - docker-compose pull
     - docker-compose up -d
