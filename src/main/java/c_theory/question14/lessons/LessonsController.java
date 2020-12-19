@@ -1,5 +1,7 @@
 package c_theory.question14.lessons;
 
+import net.bytebuddy.TypeCache;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -25,13 +27,13 @@ public class LessonsController {
     //todo A add necessary annotations on the class
 
     //B create a method to query lessons (plural)
-    Long DEFAULT_YEAR = 2020L;
+    public static final String DEFAULT_SORTING_DIRECTION = "DESC";
 
-    @GetMapping(value = {"", "/course/{courseId}", "/year", "/year/{year}", "/most-visited", "least-visited"})
-    public List<Lesson> findAll(@PathVariable("courseId") Long courseId, @PathVariable("year") Long year) {
-        if (year == null) {
-            year = DEFAULT_YEAR;
-        }
+
+    @GetMapping
+    public List<Lesson> findAll(@RequestParam(defaultValue = "1") Long courseId,
+                                @RequestParam(defaultValue = "2020") Long year,
+                                @RequestParam(defaultValue = DEFAULT_SORTING_DIRECTION) Sort.Direction sortDirection) {
         return Collections.singletonList(new Lesson());
     }
 
