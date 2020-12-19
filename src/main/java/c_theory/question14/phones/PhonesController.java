@@ -1,5 +1,16 @@
 package c_theory.question14.phones;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@Controller
+@RequestMapping("/phones")
 public class PhonesController {
 
     //todo for question 14 there are 4 assignments in total
@@ -35,8 +46,58 @@ public class PhonesController {
 
     //todo J modify correct method to support searching by price range: priceFrom-priceTo while keeping original functionality
 
-    //todo K modify correct method to order/sort chairs
+    //todo K modify correct method to order/sort phones
     // * by latest released date first
     // * by earliest released date first
     // (you can assume that by default it searches most popular first)
+
+    @Autowired
+    private PhoneService phoneService;
+    @Autowired
+    private AppService appService;
+
+    @GetMapping(value = "/")
+    public List<Phone> getPhones (@RequestParam(value="manufacturer", required = false) String manufacturer,
+                                  @RequestParam(value="from", required = false) Float start,
+                                  @RequestParam(value="to", required = false) Float end,
+                                  @RequestParam(value="direction", required = false) Sort.Direction direction,
+                                  Pageable pageable) {
+        return null;
+        //return phoneService.getByQuery(manufacturer, start, end, pageable, direction);
+    }
+
+    @GetMapping(value="/{id}")
+    public Optional<Phone> getPhoneById(@PathVariable("id") Long id) {
+        return null;
+        //return phoneService.findById(id);
+    }
+
+    @PostMapping("/")
+    @ResponseBody
+    public Phone savePhone(@RequestBody Phone phone){
+        return null;
+        //return phoneService.save(phone);
+    }
+
+    @PutMapping("/{id}")
+    public Phone updatePhone(@RequestBody Phone phone) {
+        return null;
+        //return phoneService.save(phone);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletePhoneById(@PathVariable("id") Long id) {
+        //phoneService.deleteById(id);
+    }
+
+    @GetMapping("/{id}/apps")
+    public List<App> getAppsByPhoneId(@PathVariable("id") Long id) {
+        return null;
+        //return appService.findByPhoneId(id);
+    }
+
+    @PatchMapping("/{id}")
+    public void updatePhonePrice(@RequestParam Float price, @PathVariable("id") Long id) {
+        //phoneService.updatePhonePrice(price, id);
+    }
 }
