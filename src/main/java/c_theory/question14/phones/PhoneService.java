@@ -22,7 +22,7 @@ public class PhoneService {
     public void deleteById(Long id) {phoneRepository.deleteById(id); }
     public Phone save(Phone phone) { return phoneRepository.save(phone); }
     public void updatePhonePrice(Float price, Long id) {
-        Optional<Phone> phone = phoneRepository.findById(id);
-        phone.ifPresent(p->p.setPrice(price));
+        Phone phone = phoneRepository.findById(id).orElseThrow(() -> new RuntimeException("Unavailable"));
+        phone.setPrice(price);
     }
 }
