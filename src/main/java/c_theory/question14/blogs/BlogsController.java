@@ -66,7 +66,7 @@ public class BlogsController {
 
     //todo H create a method to update blog url (and nothing else)
     @PutMapping("/{id}/url")
-    public Blog updateBlogUrl(@PathVariable Long id, @RequestBody Blog blog) {
+    public Blog updateBlogUrl(@PathVariable Long id, @RequestBody String url) {
         return new Blog();
     }
 
