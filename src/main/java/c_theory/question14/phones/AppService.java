@@ -11,7 +11,7 @@ public class AppService {
     @Autowired
     private AppRepository appRepository;
 
-    List<App> findByPhoneId(Long id, Sort.Direction sortDirection) {
-        return appRepository.findAllByPhoneId(id, sortDirection);
+    List<App> findByPhoneId(Long id) {
+        return appRepository.findAllByPhoneId(id);
     }
 }

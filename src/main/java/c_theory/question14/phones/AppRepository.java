@@ -9,6 +9,5 @@ import java.util.List;
 
 @Repository
 public interface AppRepository extends JpaRepository<App, Long> {
-    @Query("select a from Apps a where a.phoneId = ?1 order by ?2")
-    List<App> findAllByPhoneId(Long id, Sort.Direction direction);
+    List<App> findAllByPhoneId(Long id);
 }

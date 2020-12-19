@@ -3,6 +3,7 @@ package c_theory.question14.phones;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +14,8 @@ public class PhoneService {
     @Autowired
     private PhoneRepository phoneRepository;
 
-    public List<Phone> getByQuery(String manufacturer, Float start, Float end, Pageable pageable) {
-        return phoneRepository.getByQuery(manufacturer, start, end, pageable);
+    public List<Phone> getByQuery(String manufacturer, Float start, Float end, Pageable pageable, Sort.Direction direction) {
+        return phoneRepository.getByQuery(manufacturer, start, end, direction, pageable);
     }
     public Optional<Phone> findById(Long id) {
         return phoneRepository.findById(id);
