@@ -17,7 +17,6 @@ spring:
           protocol: smtp
         from:
           email: taltechdonalds2020@gmail.com
-
   jackson:
     default-property-inclusion: non_null
   jpa:
