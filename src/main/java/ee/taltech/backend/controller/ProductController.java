@@ -14,6 +14,7 @@ import ee.taltech.backend.service.CommentService;
 import ee.taltech.backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -52,6 +53,7 @@ public class ProductController {
         productService.delete(id);
     }
 
+    @Secured({Roles.ADMIN, Roles.USER})
     @PostMapping("/{productId}/comments")
     public CommentDto saveComment(@PathVariable Long productId, @RequestBody CommentRequest request) throws InvalidCommentException, ProductNotFoundException {
         Product product = productService.findById(productId);
