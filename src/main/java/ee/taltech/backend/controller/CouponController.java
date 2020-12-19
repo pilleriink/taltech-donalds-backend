@@ -20,6 +20,7 @@ public class CouponController {
         return couponService.findAll();
     }
 
+    @Secured({Roles.ADMIN, Roles.USER})
     @GetMapping("/{id}")
     public Coupon getCouponById(@PathVariable Long id) {
         return couponService.findById(id);

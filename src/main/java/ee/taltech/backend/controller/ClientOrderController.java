@@ -6,10 +6,12 @@ import ee.taltech.backend.model.order.ClientOrder;
 import ee.taltech.backend.model.order.ClientOrderDto;
 import ee.taltech.backend.model.order.OrderMeal;
 import ee.taltech.backend.model.order.OrderProduct;
+import ee.taltech.backend.security.Roles;
 import ee.taltech.backend.service.order.ClientOrderService;
 import ee.taltech.backend.service.order.OrderMealService;
 import ee.taltech.backend.service.order.OrderProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,11 +24,13 @@ public class ClientOrderController {
     @Autowired
     private ClientOrderService clientOrderService;
 
+    @Secured({Roles.ADMIN, Roles.USER})
     @GetMapping("/user/{id}")
     public List<ClientOrderDto> findByUser(@PathVariable Long id) {
         return clientOrderService.findByUser(id);
     }
 
+    @Secured({Roles.ADMIN, Roles.USER})
     @PostMapping
     public ClientOrder save(@RequestBody ClientOrder clientOrderData) throws InvalidOrderException {
         return clientOrderService.save(clientOrderData);
