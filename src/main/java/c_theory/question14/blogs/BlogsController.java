@@ -27,38 +27,49 @@ public class BlogsController {
     // Modifying other classes is unnecessary and will not be graded.
 
     //todo A add necessary annotations on the class
-    @Autowired
-    BlogsService blogsService;
+
 
     //todo B create a method to query blogs (plural)
     @GetMapping
     List<Blog> getBlogs() {
-        return blogsService.getBlogs();}
+        return List.of();
+    }
 
     //todo C create a method to query single blog
     @GetMapping("/{id}")
     public Blog getBlogById(@PathVariable Long id) {
-        return blogsService.getBlogById(id);
+        return new Blog();
     }
 
     //todo D create a method to save a new blog
     @PostMapping
     public Blog addBlog(@RequestBody Blog blog) {
-        return blogsService.addBlog(blog);
+        return new Blog();
     }
 
     //todo E create a method to update a bog
-
+    @PutMapping("/{id}")
+    public Blog updateBlog(@PathVariable Long id, @RequestBody Blog blog) {
+        return new Blog();
+    }
 
     //todo F create a method to delete a blog
     @DeleteMapping("{id}")
     public void deleteBlog(@PathVariable Long id) {
-        blogsService.deleteBlog();
     }
 
     //todo G assuming each blog has only 1 author (one-to-one relation) create a method to query blog's author
+    @GetMapping("/{id}/author")
+    public Author getBlogAuthor(@PathVariable Long id) {
+        return new Author();
+    }
 
     //todo H create a method to update blog url (and nothing else)
+    @PutMapping("/{id}/url")
+    public Blog updateBlogUrl(@PathVariable Long id, @RequestBody Blog blog) {
+        return new Blog();
+    }
+
 
     //todo I-J modify correct method to support pagination, pagination is done by page and size
     //todo I add page (pagination starts at page 1)

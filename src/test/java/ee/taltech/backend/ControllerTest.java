@@ -23,7 +23,7 @@ class ControllerTest {
     @Autowired
     private LocationController locationController;
     @Autowired
-    private CategoryController categoryController;
+    private CouponController couponController;
     @Autowired
     private OrderProductController orderProductController;
     @Autowired
@@ -49,6 +49,12 @@ class ControllerTest {
     @Test
     void mealControllerGetResponseFindAll() {
         ResponseEntity<String> entity = testRestTemplate.getForEntity("/meals", String.class);
+        assertEquals(HttpStatus.OK, entity.getStatusCode());
+    }
+
+    @Test
+    void couponControllerGetResponseFindAll() {
+        ResponseEntity<String> entity = testRestTemplate.getForEntity("/coupons", String.class);
         assertEquals(HttpStatus.OK, entity.getStatusCode());
     }
 

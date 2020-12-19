@@ -1,5 +1,6 @@
 package ee.taltech.backend.model.order;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,8 +20,11 @@ public class OrderProduct {
     private Double price;
     private String removedIngredients;
     @ManyToOne
-    @JoinColumn(name = "client_order_id", nullable = false)
+    @JsonIgnore
     private ClientOrder clientOrder;
+    @ManyToOne
+    @JsonIgnore
+    private OrderMeal orderMeal;
     public OrderProduct(String name, Double price, String removedIngredients, ClientOrder clientOrder) {
         this.name = name;
         this.price = price;
