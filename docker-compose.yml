@@ -17,5 +17,5 @@ services:
       - POSTGRES_DB=$POSTGRES_DB
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-    - /home/gitlab-runner/database:/var/lib/postgresql/data/pgdata
+    - /tmp/database:/var/lib/postgresql/data/pgdata
 
