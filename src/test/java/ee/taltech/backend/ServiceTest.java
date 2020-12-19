@@ -69,13 +69,6 @@ public class ServiceTest {
     }
 
     @Test
-    void clientOrderServiceThrowsExceptionWhenEmptyOrder() {
-        assertThrows(InvalidOrderException.class, () -> {
-           clientOrderService.save(new ClientOrder());
-        });
-    }
-
-    @Test
     void orderProductServiceThrowsExceptionWhenIdNotNull() {
         OrderProduct orderProduct = new OrderProduct();
         orderProduct.setId(10L);
