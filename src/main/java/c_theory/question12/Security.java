@@ -8,12 +8,12 @@ public class Security {
 
     //todo B
     // What is authorization?
-    // Answer: giving official permission
+    // Answer: Giving official permission based on user role
 
     //todo C
     // For web (HTTP backend) Spring Security is configured as a ... ? Explain it.
     // Think or read how Spring Security checks are injection into your application.
-    // Configured as (one word):
-    // Description:
+    // Configured as (one word): filter
+    // Description: Spring security checks are done using a filter. The filter checks every request for a valid token.
 
 }

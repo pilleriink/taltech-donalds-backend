@@ -21,10 +21,6 @@ public class ClientOrderController {
 
     @Autowired
     private ClientOrderService clientOrderService;
-    @Autowired
-    private OrderProductService orderProductService;
-    @Autowired
-    private OrderMealService orderMealService;
 
     @GetMapping("/user/{id}")
     public List<ClientOrderDto> findByUser(@PathVariable Long id) {
@@ -32,7 +28,7 @@ public class ClientOrderController {
     }
 
     @PostMapping
-    public ClientOrder save(@RequestBody ClientOrder clientOrderData) throws InvalidOrderException, InvalidOrderProductException {
+    public ClientOrder save(@RequestBody ClientOrder clientOrderData) throws InvalidOrderException {
         return clientOrderService.save(clientOrderData);
     }
 }

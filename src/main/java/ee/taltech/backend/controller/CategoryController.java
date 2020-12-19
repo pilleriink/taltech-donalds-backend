@@ -34,7 +34,7 @@ public class CategoryController {
 
     @Secured(Roles.ADMIN)
     @PostMapping
-    public CategoryDto save(@RequestBody CategoryDto categoryDto){
+    public CategoryDto save(@RequestBody CategoryDto categoryDto) {
         return categoryService.save(categoryDto);
     }
 
