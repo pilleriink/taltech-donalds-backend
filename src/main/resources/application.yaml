@@ -13,6 +13,10 @@ spring:
           auth: true
           starttls:
             enable: true
+        transport:
+          protocol: smtp
+        from:
+          email: taltechdonalds@gmail.com
 
   jackson:
     default-property-inclusion: non_null
