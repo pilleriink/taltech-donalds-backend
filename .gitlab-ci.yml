@@ -4,7 +4,8 @@ stages:
   - publish
   - deploy
 
-build donald:
+build:
+  stage: build
   image: gradle:6.7.0-jdk11
   stage: build
   cache:
@@ -18,7 +19,7 @@ build donald:
   tags:
     - build
 
-test donald:
+test:
   image: gradle:6.7.0-jdk11
   stage: test
   script:
@@ -26,17 +27,12 @@ test donald:
   tags:
     - build
 
-publish docker image:
+publish:
   image: docker:19.03
   stage: publish
-  only:
-    - tags
-  except:
-    - branches
   before_script:
     - mkdir -p ~/.docker
     - echo $DOCKER_AUTH > ~/.docker/config.json
-    - docker info
     - docker login
   script:
     - docker build -t taltech-donald .
@@ -45,19 +41,14 @@ publish docker image:
   tags:
     - build
 
-deploy donald:
+backend:deploy:
   stage: deploy
-  only:
-    - tags
   before_script:
     - mkdir -p ~/.docker
     - echo $DOCKER_AUTH > ~/.docker/config.json
-  except:
-    - branches
   script:
     - docker-compose down
     - docker-compose pull
     - docker-compose up -d
   tags:
     - prod
-

@@ -1,5 +1,6 @@
 package ee.taltech.backend.model.order;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +19,8 @@ public class OrderMeal {
     private Long id;
     private String name;
     private Double price;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JsonIgnore
     private ClientOrder clientOrder;
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderProduct> orderProducts;

@@ -25,7 +25,7 @@ public class ClientOrder {
     private User user;
     @ManyToOne
     private Location location;
-    @OneToMany(mappedBy = "clientOrder")
+    @OneToMany(mappedBy = "clientOrder", cascade = CascadeType.ALL)
     private List<OrderProduct> orderProducts = new ArrayList<>();
     @OneToMany(mappedBy = "clientOrder", cascade = CascadeType.ALL)
     private List<OrderMeal> orderMeals = new ArrayList<>();

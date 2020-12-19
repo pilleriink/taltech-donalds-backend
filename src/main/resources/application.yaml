@@ -5,15 +5,18 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: taltechdonalds@gmail.com
-    password: taltechdonalds2020
+    username: taltechdonalds2020@gmail.com
+    password: TaltechDonalds2020
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
-
+        transport:
+          protocol: smtp
+        from:
+          email: taltechdonalds2020@gmail.com
   jackson:
     default-property-inclusion: non_null
   jpa:
@@ -21,9 +24,9 @@ spring:
     hibernate:
       ddl-auto: create
   datasource:
-    url: jdbc:postgresql://localhost:5432/programm
+    url: jdbc:postgresql://database:5432/programm
     driverClassName: org.postgresql.Driver
-    username: runner
+    username: postgres
     password: password
     platform: POSTGRES
 logging:
