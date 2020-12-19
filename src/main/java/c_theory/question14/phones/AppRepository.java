@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface AppRepository extends JpaRepository<App, Long> {
-    List<App> findAllByPhoneId(Long id);
+    //List<App> findAllByPhoneId(Long id);
 }

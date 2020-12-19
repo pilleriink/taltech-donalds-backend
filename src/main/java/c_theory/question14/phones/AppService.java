@@ -8,10 +8,10 @@ import java.util.List;
 
 @Service
 public class AppService {
-    @Autowired
-    private AppRepository appRepository;
-
-    List<App> findByPhoneId(Long id) {
-        return appRepository.findAllByPhoneId(id);
-    }
+//    @Autowired
+//    private AppRepository appRepository;
+//
+//    List<App> findByPhoneId(Long id) {
+//        return appRepository.findAllByPhoneId(id);
+//    }
 }

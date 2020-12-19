@@ -11,19 +11,19 @@ import java.util.Optional;
 
 @Service
 public class PhoneService {
-    @Autowired
-    private PhoneRepository phoneRepository;
-
-    public List<Phone> getByQuery(String manufacturer, Float start, Float end, Pageable pageable, Sort.Direction direction) {
-        return phoneRepository.getByQuery(manufacturer, start, end, direction, pageable);
-    }
-    public Optional<Phone> findById(Long id) {
-        return phoneRepository.findById(id);
-    }
-    public void deleteById(Long id) {phoneRepository.deleteById(id); }
-    public Phone save(Phone phone) { return phoneRepository.save(phone); }
-    public void updatePhonePrice(Float price, Long id) {
-        Phone phone = phoneRepository.findById(id).orElseThrow(() -> new RuntimeException("Unavailable"));
-        phone.setPrice(price);
-    }
+//    @Autowired
+//    private PhoneRepository phoneRepository;
+//
+//    public List<Phone> getByQuery(String manufacturer, Float start, Float end, Pageable pageable, Sort.Direction direction) {
+//        return phoneRepository.getByQuery(manufacturer, start, end, direction, pageable);
+//    }
+//    public Optional<Phone> findById(Long id) {
+//        return phoneRepository.findById(id);
+//    }
+//    public void deleteById(Long id) {phoneRepository.deleteById(id); }
+//    public Phone save(Phone phone) { return phoneRepository.save(phone); }
+//    public void updatePhonePrice(Float price, Long id) {
+//        Phone phone = phoneRepository.findById(id).orElseThrow(() -> new RuntimeException("Unavailable"));
+//        phone.setPrice(price);
+//    }
 }
