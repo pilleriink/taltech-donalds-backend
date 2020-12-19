@@ -86,25 +86,10 @@ class ControllerTest {
         assertTrue(locationController.getLocations().size() > 0);
     }
 
-
-    @Test
-    void orderProductControllerThrowsExceptionWhenProductIsEmpty() {
-        assertThrows(InvalidOrderProductException.class, () -> {
-            orderProductController.save(new OrderProduct());
-        });
-    }
-
     @Test
     void productControllerThrowsExceptionWhenProductNotInDB() {
         assertThrows(ProductNotFoundException.class, () -> {
            productController.getProductById(999L);
-        });
-    }
-
-    @Test
-    void orderMealCategoryThrowsExceptionWhenMealIsEmpty() {
-        assertThrows(InvalidOrderMealException.class, () -> {
-            orderMealController.save(new OrderMeal());
         });
     }
 
