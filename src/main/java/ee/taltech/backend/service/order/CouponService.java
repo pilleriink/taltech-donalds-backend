@@ -28,10 +28,11 @@ public class CouponService {
     }
 
     public Coupon save(Coupon coupon) {
+        Coupon coupon1 = couponRepository.save(coupon);
         for (User user : userService.findAll()) {
             emailService.sendSimpleMessageCoupon(coupon, user);
         }
-        return couponRepository.save(coupon);
+        return coupon1;
     }
 
     public void delete(Long id) {

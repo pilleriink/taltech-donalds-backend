@@ -60,9 +60,9 @@ public class ClientOrderService {
         for (OrderProduct orderProduct : clientOrder1.getOrderProducts()) {
             orderProduct.setClientOrder(clientOrder1);
         }
-
+        ClientOrder clientOrder2 = clientOrderRepository.save(clientOrder1);
         emailService.sendSimpleMessageOrder(clientOrder);
-        return clientOrderRepository.save(clientOrder1);
+        return clientOrder2;
     }
 
     public List<ClientOrderDto> findByUser(Long userId) {
